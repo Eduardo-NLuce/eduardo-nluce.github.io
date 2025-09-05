@@ -44,11 +44,7 @@ if (contactForm) {
 // Manejo de descargas
 document.querySelectorAll('.download-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-        const fileName = this.getAttribute('data-file');
-        alert(`Downloading ${fileName}...\n\nIn a real implementation, this would download your file.`);
-        
-        // Para descargas reales, necesitarías:
-        // window.location.href = `downloads/${fileName}`;
+        alert('Download would start in a real implementation.');
     });
 });
 
@@ -60,5 +56,58 @@ document.addEventListener('DOMContentLoaded', function() {
             this.src = 'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80';
             this.alt = 'Project image placeholder';
         };
+    });
+});
+
+// Sistema de proyectos clickeables
+document.addEventListener('DOMContentLoaded', function() {
+    // Crear overlay de fondo
+    const overlay = document.createElement('div');
+    overlay.className = 'project-overlay';
+    document.body.appendChild(overlay);
+    
+    // Función para abrir proyecto
+    function openProject(projectId) {
+        const projectDetail = document.getElementById(`project-${projectId}`);
+        if (projectDetail) {
+            projectDetail.style.display = 'block';
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+    }
+    
+    // Función para cerrar proyecto
+    function closeProject() {
+        const openProject = document.querySelector('.project-detail[style="display: block;"]');
+        if (openProject) {
+            openProject.style.display = 'none';
+        }
+        overlay.style.display = 'none';
+        document.body.style.overflow = ''; // Permitir scroll again
+    }
+    
+    // Event listeners para abrir
+    document.querySelectorAll('.clickable-project').forEach(item => {
+        item.addEventListener('click', function(e) {
+            if (!e.target.closest('.close-project')) {
+                const projectId = this.getAttribute('data-project');
+                openProject(projectId);
+            }
+        });
+    });
+    
+    // Event listeners para cerrar
+    document.querySelectorAll('.close-project').forEach(button => {
+        button.addEventListener('click', closeProject);
+    });
+    
+    // Cerrar al hacer clic en el overlay
+    overlay.addEventListener('click', closeProject);
+    
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeProject();
+        }
     });
 });
