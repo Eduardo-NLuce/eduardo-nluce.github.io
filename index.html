@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eduardo Luce MArch</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="texts">Texts</a></li>
+                <li><a href="#" class="nav-link" data-section="downloads">Downloads</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="portfolio" class="active">
+            <h1>Selected Projects</h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="images/proyecto-1.jpg" alt="Urban Residence">
+                    <div class="overlay">
+                        <h2>Urban Residence</h2>
+                        <p>Tokyo, 2022</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/proyecto-2.jpg" alt="Mountain Retreat">
+                    <div class="overlay">
+                        <h2>Mountain Retreat</h2>
+                        <p>Switzerland, 2021</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/proyecto-3.jpg" alt="Modern Apartment">
+                    <div class="overlay">
+                        <h2>Modern Apartment</h2>
+                        <p>New York, 2019</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/proyecto-4.jpg" alt="Cultural Center">
+                    <div class="overlay">
+                        <h2>Cultural Center</h2>
+                        <p>Seoul, 2017</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            <ul class="texts-list">
+                <li class="text-item">
+                    <h3>The Future of Sustainable Architecture</h3>
+                    <p>Exploring how new materials and technologies are shaping the way we think about environmentally conscious architecture in urban environments.</p>
+                    <span class="meta">Published in Architectural Review, May 2023</span>
+                </li>
+                <li class="text-item">
+                    <h3>Minimalism in Modern Architecture</h3>
+                    <p>How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement.</p>
+                    <span class="meta">Published in Design Quarterly, March 2023</span>
+                </li>
+                <li class="text-item">
+                    <h3>Blending Indoor and Outdoor Spaces</h3>
+                    <p>Techniques for creating seamless transitions between interior and exterior spaces in residential architecture.</p>
+                    <span class="meta">Published in Modern Living, January 2023</span>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="downloads">
+            <h1>Resources & Documents</h1>
+            <ul class="downloads-list">
+                <li class="download-item">
+                    <div>
+                        <h3>Portfolio PDF</h3>
+                        <p>Complete portfolio with selected projects and descriptions</p>
+                    </div>
+                    <button class="download-btn" data-file="portfolio.pdf">Download</button>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Curriculum Vitae</h3>
+                        <p>Updated CV with experience and education</p>
+                    </div>
+                    <button class="download-btn" data-file="cv.pdf">Download</button>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Lecture Slides: Sustainable Design</h3>
+                        <p>Presentation from recent conference on sustainable architecture</p>
+                    </div>
+                    <button class="download-btn" data-file="lecture.pdf">Download</button>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
