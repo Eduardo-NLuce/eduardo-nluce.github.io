@@ -24,67 +24,27 @@
             <h1>Selected Projects</h1>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-    <img src="images/axochiapan-dome.jpg" alt="Reconstrucción de Cúpula Axochiapan">
-    <div class="overlay">
-        <h2>Reconstrucción de Cúpula - Iglesia de Axochiapan</h2>
-        <p>Axochiapan, Morelos · 2019-2020</p>
-    </div>
-</div>
+                    <div class="project-image clickable-project" data-project="axochiapan">
+                        <img src="images/axochiapan-dome.jpg" alt="Reconstrucción de Cúpula Axochiapan">
+                        <div class="overlay">
+                            <h2>Reconstrucción de Cúpula - Iglesia de Axochiapan</h2>
+                            <p>Axochiapan, Morelos · 2019-2020</p>
+                            <div class="click-hint">↗ Click para ver detalles</div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="project-detail">
-    <h3>Cálculo Geométrico y Parametrización para Reconstrucción de Cúpula</h3>
-    
-    <p class="project-meta">Colaboradores: Arq. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
-    <p class="project-meta">Contexto: Reconstrucción post-sismo · Conservación de patrimonio</p>
-    
-    <div class="project-description">
-        <p>Tras el sismo de 2017 que dañó gravemente la iglesia principal de Axochiapan, este proyecto involucró cálculo geométrico avanzado y modelado paramétrico usando Grasshopper para facilitar la reconstrucción precisa de la cúpula histórica.</p>
-        
-        <h4>Enfoque Técnico</h4>
-        <ul>
-            <li>Documentación Digital: Escaneo láser y fotogrametría</li>
-            <li>Modelado Paramétrico: Definición en Grasshopper para geometría de cúpula</li>
-            <li>Análisis Estructural: Integración con plugins de análisis de elementos finitos</li>
-            <li>Optimización Material: Patrones de colocación de ladrillo optimizados</li>
-        </ul>
-        
-        <h4>Noticias y Artículos de Referencia</h4>
-        <div class="project-references">
-            <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
-                📰 Diario de Morelos - Reconstruyen templo de Axochiapan (2019)
-            </a>
-            <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
-                🏛️ INAH - Reconstrucción del patrimonio dañado por sismo
-            </a>
-            <a href="https://www.uaem.mx/noticias/archivo/2019/noviembre/191125a.html" target="_blank" class="news-link">
-                📚 UAEM - Investigación sobre reconstrucción patrimonial
-            </a>
-        </div>
-        
-        <h4>Publicaciones Académicas</h4>
-        <div class="project-publications">
-            <p>Ontiveros, M. (2019). <em>Enfoques Paramétricos para la Conservación del Patrimonio: El Caso de las Iglesias Coloniales Mexicanas</em>. Journal of Architectural Conservation.</p>
-            <p>Oliva Salinas, J.G. (2020). <em>Métodos Computacionales para Refuerzo Sísmico de Estructuras Históricas</em>. International Journal of Architectural Computing.</p>
-            <a href="#" class="publication-link">📄 Ver publicación completa</a>
-        </div>
-        
-        <p class="project-acknowledgement">Realizado con permiso del Instituto Nacional de Antropología e Historia (INAH)</p>
-    </div>
-</div>
                 <div class="portfolio-item">
-                    <img src="images/proyecto-1.jpg" alt="Urban Residence">
-                    <div class="overlay">
-                        <h2>Urban Residence</h2>
-                        <p>Tokyo, 2022</p>
+                    <div class="project-image clickable-project" data-project="bhs-calculator">
+                        <img src="images/baggage-carousel-calculator.jpg" alt="Baggage Carousel Calculator Grasshopper Plugin">
+                        <div class="overlay">
+                            <h2>Baggage Carousel Calculator</h2>
+                            <p>Grasshopper Plugin · 2025</p>
+                            <div class="click-hint">↗ Click para ver detalles</div>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="images/proyecto-2.jpg" alt="Mountain Retreat">
-                    <div class="overlay">
-                        <h2>Mountain Retreat</h2>
-                        <p>Switzerland, 2021</p>
-                    </div>
-                </div>
+
                 <div class="portfolio-item">
                     <img src="images/proyecto-3.jpg" alt="Modern Apartment">
                     <div class="overlay">
@@ -102,6 +62,166 @@
             </div>
         </section>
         
+        <!-- Modal Proyecto Axochiapan -->
+        <div id="project-axochiapan" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Reconstrucción de Cúpula - Iglesia de Axochiapan</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Colaboradores: Arq. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
+                <p class="project-meta">Contexto: Reconstrucción post-sismo · Conservación de patrimonio</p>
+                
+                <div class="project-description">
+                    <p>Tras el sismo de 2017 que dañó gravemente la iglesia principal de Axochiapan, este proyecto involucró cálculo geométrico avanzado y modelado paramétrico usando Grasshopper para facilitar la reconstrucción precisa de la cúpula histórica.</p>
+                    
+                    <h4>Enfoque Técnico</h4>
+                    <ul>
+                        <li>Documentación Digital: Escaneo láser y fotogrametría</li>
+                        <li>Modelado Paramétrico: Definición en Grasshopper para geometría de cúpula</li>
+                        <li>Análisis Estructural: Integración con plugins de análisis de elementos finitos</li>
+                        <li>Optimización Material: Patrones de colocación de ladrillo optimizados</li>
+                    </ul>
+                    
+                    <h4>Noticias y Artículos de Referencia</h4>
+                    <div class="project-references">
+                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
+                            📰 Diario de Morelos - Reconstruyen templo de Axochiapan (2019)
+                        </a>
+                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
+                            🏛️ INAH - Reconstrucción del patrimonio dañado por sismo
+                        </a>
+                        <a href="https://www.uaem.mx/noticias/archivo/2019/noviembre/191125a.html" target="_blank" class="news-link">
+                            📚 UAEM - Investigación sobre reconstrucción patrimonial
+                        </a>
+                    </div>
+                    
+                    <h4>Publicaciones Académicas</h4>
+                    <div class="project-publications">
+                        <p>Ontiveros, M. (2019). <em>Enfoques Paramétricos para la Conservación del Patrimonio: El Caso de las Iglesias Coloniales Mexicanas</em>. Journal of Architectural Conservation.</p>
+                        <p>Oliva Salinas, J.G. (2020). <em>Métodos Computacionales para Refuerzo Sísmico de Estructuras Históricas</em>. International Journal of Architectural Computing.</p>
+                        <a href="#" class="publication-link">📄 Ver publicación completa</a>
+                    </div>
+                    
+                    <p class="project-acknowledgement">Realizado con permiso del Instituto Nacional de Antropología e Historia (INAH)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal BHS Calculator -->
+        <div id="project-bhs-calculator" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Baggage Carousel Calculator</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Desarrollador: Eduardo Luce · 2025</p>
+                <p class="project-meta">Categoría: Plugin Grasshopper · Diseño Paramétrico Aeroportuario</p>
+                
+                <div class="project-description">
+                    <h4>📖 Descripción</h4>
+                    <p>Herramienta paramétrica para Grasshopper que calcula y diseña automáticamente carruseles de reclamo de equipaje según especificaciones IATA y datos de aeronaves. Optimiza la distribución espacial en salas de reclamo basándose en el mix operacional de aeronaves.</p>
+                    
+                    <div class="project-disclaimer">
+                        <strong>⚠️ Disclaimer:</strong> Herramienta de planificación conceptual desarrollada por Eduardo Luce (2025). No sustituye el cálculo profesional para implementaciones operativas.
+                    </div>
+
+                    <div class="project-download">
+                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>
+                            📦 Descargar Plugin (ZIP, 2.3 MB)
+                        </a>
+                        <p class="download-note">Incluye archivo .ghuser + documentación PDF</p>
+                    </div>
+
+                    <h4>🎛️ Parámetros de Entrada</h4>
+                    <div class="technical-specs">
+                        <div class="spec-item">
+                            <span class="spec-name">Narrow Body Count</span>
+                            <span class="spec-desc">Número de aeronaves de fuselaje estrecho (A320/B737)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Wide Body Count</span>
+                            <span class="spec-desc">Número de aeronaves de fuselaje ancho (B777/A350)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Standard Length</span>
+                            <span class="spec-desc">Longitud objetivo para carruseles estándar (metros)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Operation Mode</span>
+                            <span class="spec-desc">1=Solo estándar, 2=Solo variable, 3=Modo mixto</span>
+                        </div>
+                    </div>
+
+                    <h4>📤 Resultados y Outputs</h4>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">📐</div>
+                            <h5>Geometría Paramétrica</h5>
+                            <p>Generación automática de curvas 2D y superficies 3D para cada carrusel</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <h5>Cálculos de Capacidad</h5>
+                            <p>Estimación de pasajeros, área requerida y dimensiones óptimas</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚙️</div>
+                            <h5>Optimización Espacial</h5>
+                            <p>Distribución inteligente con buffers de circulación y spacing</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📝</div>
+                            <h5>Reporte Automático</h5>
+                            <p>Generación de resumen con datos técnicos y referencias IATA</p>
+                        </div>
+                    </div>
+
+                    <h4>📚 Estándares Implementados</h4>
+                    <div class="standards-list">
+                        <div class="standard-item">
+                            <span class="standard-badge">IATA</span>
+                            <span>Airport Development Reference Manual (ADRM) 9th Edition</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">FAA</span>
+                            <span>Advisory Circular 150/5360-13A, Planning and Design Guidelines</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">ICAO</span>
+                            <span>Annex 14 - Aerodromes, Volume I - Aerodrome Design and Operations</span>
+                        </div>
+                    </div>
+
+                    <h4>🛠️ Requisitos Técnicos</h4>
+                    <div class="requirements">
+                        <div class="req-item">
+                            <strong>Software:</strong> Rhinoceros 7+ y Grasshopper
+                        </div>
+                        <div class="req-item">
+                            <strong>Componentes:</strong> Grasshopper estándar (no requiere plugins adicionales)
+                        </div>
+                        <div class="req-item">
+                            <strong>Instalación:</strong> Copiar archivo .ghuser a la carpeta de componentes de Grasshopper
+                        </div>
+                    </div>
+
+                    <div class="usage-guide">
+                        <h4>🚀 Guía Rápida de Uso</h4>
+                        <ol>
+                            <li>Descargar y descomprimir el archivo ZIP</li>
+                            <li>Copiar <code>BaggageCarouselCalculator.ghuser</code> a la carpeta de componentes de Grasshopper</li>
+                            <li>Reiniciar Rhino y Grasshopper</li>
+                            <li>Buscar "Baggage Carousel Calculator" en los componentes de Grasshopper</li>
+                            <li>Conectar inputs y visualizar resultados</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section id="texts">
             <h1>Writings & Publications</h1>
             <ul class="texts-list">
@@ -115,11 +235,6 @@
                     <p>How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement.</p>
                     <span class="meta">Published in Design Quarterly, March 2023</span>
                 </li>
-                <li class="text-item">
-                    <h3>Blending Indoor and Outdoor Spaces</h3>
-                    <p>Techniques for creating seamless transitions between interior and exterior spaces in residential architecture.</p>
-                    <span class="meta">Published in Modern Living, January 2023</span>
-                </li>
             </ul>
         </section>
         
@@ -131,21 +246,14 @@
                         <h3>Portfolio PDF</h3>
                         <p>Complete portfolio with selected projects and descriptions</p>
                     </div>
-                    <button class="download-btn" data-file="portfolio.pdf">Download</button>
+                    <button class="download-btn">Download</button>
                 </li>
                 <li class="download-item">
                     <div>
                         <h3>Curriculum Vitae</h3>
                         <p>Updated CV with experience and education</p>
                     </div>
-                    <button class="download-btn" data-file="cv.pdf">Download</button>
-                </li>
-                <li class="download-item">
-                    <div>
-                        <h3>Lecture Slides: Sustainable Design</h3>
-                        <p>Presentation from recent conference on sustainable architecture</p>
-                    </div>
-                    <button class="download-btn" data-file="lecture.pdf">Download</button>
+                    <button class="download-btn">Download</button>
                 </li>
             </ul>
         </section>
@@ -178,6 +286,9 @@
     <footer>
         &copy; 2023 Eduardo Luce MArch. All rights reserved.
     </footer>
+
+    <!-- Overlay para modales -->
+    <div class="project-overlay"></div>
     
     <script src="script.js"></script>
 </body>
