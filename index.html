@@ -77,23 +77,72 @@
         <!-- TEXTS SECTION -->
         <section id="texts">
             <h1>Writings & Publications</h1>
-            <ul class="texts-list">
-                <li class="text-item">
-                    <h3>The Future of Sustainable Architecture</h3>
-                    <p>Exploring how new materials and technologies are shaping the way we think about environmentally conscious architecture in urban environments.</p>
-                    <span class="meta">Published in Architectural Review, May 2023</span>
-                </li>
-                <li class="text-item">
-                    <h3>Minimalism in Modern Architecture</h3>
-                    <p>How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement.</p>
-                    <span class="meta">Published in Design Quarterly, March 2023</span>
-                </li>
-                <li class="text-item">
-                    <h3>Computational Design in Heritage Conservation</h3>
-                    <p>Parametric approaches to historical building restoration and seismic reinforcement techniques.</p>
-                    <span class="meta">Published in Digital Heritage Journal, January 2023</span>
-                </li>
-            </ul>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-post" data-post="sustainable-architecture">
+                    <div class="blog-post-image">
+                        <img src="images/blog-sustainable-architecture.jpg" alt="Sustainable Architecture">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>The Future of Sustainable Architecture</h3>
+                        <p class="blog-excerpt">Exploring how new materials and technologies are shaping the way we think about environmentally conscious architecture in urban environments...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">May 15, 2023</span>
+                            <span class="blog-category">Architectural Review</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post" data-post="minimalism-architecture">
+                    <div class="blog-post-image">
+                        <img src="images/blog-minimalism.jpg" alt="Minimalism in Architecture">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Minimalism in Modern Architecture</h3>
+                        <p class="blog-excerpt">How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement that continues to shape our built environment...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">March 22, 2023</span>
+                            <span class="blog-category">Design Quarterly</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post" data-post="computational-heritage">
+                    <div class="blog-post-image">
+                        <img src="images/blog-heritage.jpg" alt="Computational Heritage">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Computational Design in Heritage Conservation</h3>
+                        <p class="blog-excerpt">Parametric approaches to historical building restoration and seismic reinforcement techniques that are revolutionizing how we preserve our architectural heritage...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">January 8, 2023</span>
+                            <span class="blog-category">Digital Heritage Journal</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post" data-post="soft-robotics">
+                    <div class="blog-post-image">
+                        <img src="images/blog-robotics.jpg" alt="Soft Robotics">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Soft Robotics in Adaptive Architecture</h3>
+                        <p class="blog-excerpt">Exploring the intersection of biomimetic design and robotic systems to create responsive architectural environments that adapt to human needs and environmental conditions...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">November 12, 2022</span>
+                            <span class="blog-category">Robotic Architecture Review</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+            </div>
         </section>
         
         <!-- DOWNLOADS SECTION -->
@@ -166,15 +215,38 @@
             <div class="project-content">
                 <p class="project-meta">Collaborators: Arch. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
                 <p class="project-meta">Context: Post-earthquake reconstruction · Heritage conservation</p>
+                
                 <div class="project-description">
                     <p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p>
+                    
+                    <p>The seismic event caused significant structural damage to the 18th-century church's dome, requiring precise digital documentation and parametric modeling to guide restoration efforts. Using photogrammetry and laser scanning technologies, we captured the existing conditions and developed a parametric model that respected the original architectural intent while incorporating necessary seismic reinforcements.</p>
+
                     <h4>Technical Approach</h4>
                     <ul>
-                        <li>Digital Documentation: Laser scanning and photogrammetry of damaged structure</li>
-                        <li>Parametric Modeling: Grasshopper definition for dome geometry reconstruction</li>
-                        <li>Structural Analysis: Integration with finite element analysis plugins</li>
-                        <li>Material Optimization: Parametric optimization of brick patterns and placement</li>
+                        <li><strong>Digital Documentation:</strong> Laser scanning and photogrammetry of damaged structure</li>
+                        <li><strong>Parametric Modeling:</strong> Grasshopper definition for dome geometry reconstruction</li>
+                        <li><strong>Structural Analysis:</strong> Integration with finite element analysis plugins</li>
+                        <li><strong>Material Optimization:</strong> Parametric optimization of brick patterns and placement</li>
+                        <li><strong>Construction Guidance:</strong> Generation of fabrication templates and assembly sequences</li>
                     </ul>
+
+                    <h4>Research Context</h4>
+                    <p>The 2017 Puebla earthquake (7.1 magnitude) damaged numerous historical buildings throughout central Mexico, with churches being particularly vulnerable due to their age and construction techniques. The reconstruction of Axochiapan's main church represents an important case study in combining traditional restoration methods with contemporary computational design approaches.</p>
+
+                    <h4>Project Significance</h4>
+                    <p>This project demonstrates how computational design and parametric modeling can serve heritage conservation, particularly in post-disaster scenarios where traditional documentation methods may be insufficient. The Grasshopper-based workflow allowed for accurate reproduction of complex geometric relationships and integration of seismic reinforcement strategies within historical constraints.</p>
+
+                    <div class="project-references">
+                        <h4>References</h4>
+                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
+                            📰 Diario de Morelos - Temple Reconstruction in Axochiapan (2019)
+                        </a>
+                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
+                            🏛️ INAH - Reconstruction of Heritage Damaged by Earthquake
+                        </a>
+                    </div>
+
+                    <p class="project-acknowledgement">Conducted with permission from Mexico's National Institute of Anthropology and History (INAH)</p>
                 </div>
             </div>
         </div>
@@ -188,57 +260,88 @@
             <div class="project-content">
                 <p class="project-meta">Developer: Eduardo Luce · 2025</p>
                 <p class="project-meta">Category: Grasshopper Plugin · Parametric Airport Design</p>
+                
                 <div class="project-description">
-                    <p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data.</p>
-                    <div class="project-download">
-                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>📦 Download Plugin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <h4>📖 Description</h4>
+                    <p>The Baggage Handling System (BHS) Carousel Calculator is a design tool for quickly estimating baggage reclaim carousel layouts based on aircraft mix and IATA standards.</p>
+                    
+                    <p>It helps planners and designers test different scenarios for narrow-body and wide-body aircraft, calculate the number and dimensions of required carousels, visualize their geometry in Grasshopper, and estimate total passenger capacity and floor area requirements.</p>
 
-        <!-- Dummy Flow Modal -->
-        <div id="project-dummy-flow" class="project-detail">
-            <div class="project-header">
-                <h3>Dummy Flow - Agent Simulation</h3>
-                <button class="close-project">×</button>
-            </div>
-            <div class="project-content">
-                <p class="project-meta">Developer: Eduardo Luce · 2025</p>
-                <div class="project-description">
-                    <p>Agent-based simulation components for Grasshopper to simulate passenger flow and spatial usage patterns.</p>
-                    <div class="project-download">
-                        <a href="downloads/DummyFlow_Components.zip" class="download-btn-large" download>📦 Download Toolkit</a>
+                    <div class="project-disclaimer">
+                        <strong>⚠️ Disclaimer:</strong> Developed by Eduardo Luce (2025) as a Work-in-Progress (WIP) research and planning tool. This tool is not intended for operational deployment without professional verification of all data.
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Wings Soft Robotic Modal -->
-        <div id="project-wings-soft-robotic" class="project-detail">
-            <div class="project-header">
-                <h3>Wings: Soft Robotic Architecture</h3>
-                <button class="close-project">×</button>
-            </div>
-            <div class="project-content">
-                <p class="project-meta">UCL Bartlett School of Architecture · 2023</p>
-                <div class="project-description">
-                    <p>Bio-inspired soft robotic system for adaptive architectural environments developed at UCL Bartlett.</p>
                     <div class="project-download">
-                        <a href="downloads/Wings_Soft_Robotic_Research.pdf" class="download-btn-large" download>📄 Research Paper</a>
+                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>
+                            📦 Download Plugin (ZIP, 2.3 MB)
+                        </a>
+                        <p class="download-note">Includes .ghuser file + PDF documentation</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        &copy; 2023 Eduardo Luce MArch. All rights reserved.
-    </footer>
 
-    <!-- Overlay for modals -->
-    <div class="project-overlay"></div>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+                    <h4>🎛️ Input Parameters</h4>
+                    <div class="technical-specs">
+                        <div class="spec-item">
+                            <span class="spec-name">Narrow Count (int)</span>
+                            <span class="spec-desc">Number of narrow-body aircraft (e.g., A320/B737 class)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Wide Count (int)</span>
+                            <span class="spec-desc">Number of wide-body aircraft (e.g., B777, A350 class)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Standard Length (float)</span>
+                            <span class="spec-desc">Target equalized carousel length (m) for standard sizing</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Draw Mode (int)</span>
+                            <span class="spec-desc">1 = Standard only | 2 = Variable only | 3 = Both</span>
+                        </div>
+                    </div>
+
+                    <h4>📤 Outputs</h4>
+                    <div class="technical-specs">
+                        <div class="spec-item">
+                            <span class="spec-name">Carousel Outlines</span>
+                            <span class="spec-desc">Outer + inner offset curves grouped in pairs</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Clearance Zones</span>
+                            <span class="spec-desc">Clearance boundary curves around each carousel</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Estimated Floor Area</span>
+                            <span class="spec-desc">Sum of carousel footprint + clearances (m²)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Passenger Capacity</span>
+                            <span class="spec-desc">Estimated passengers based on aircraft input</span>
+                        </div>
+                    </div>
+
+                    <h4>📚 References & Standards</h4>
+                    <div class="standards-list">
+                        <div class="standard-item">
+                            <span class="standard-badge">IATA</span>
+                            <span>Airport Development Reference Manual, 9th Edition (2014)</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">FAA</span>
+                            <span>Advisory Circular 150/5360-13A, Planning and Design Guidelines</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">ICAO</span>
+                            <span>Annex 14 - Aerodromes, Volume I - Aerodrome Design and Operations</span>
+                        </div>
+                    </div>
+
+                    <h4>⚙️ Installation Guide</h4>
+                    <div class="usage-guide">
+                        <ol>
+                            <li>Save the provided .gha or Grasshopper user object (.ghuser)</li>
+                            <li>Place it in your Grasshopper Libraries folder</li>
+                            <li>Restart Grasshopper</li>
+                            <li>The BHS Carousel Calculator will appear as a custom component</li>
+                        </ol>
+                    </div>
+
+   
