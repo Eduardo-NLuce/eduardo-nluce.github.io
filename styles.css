@@ -1128,3 +1128,96 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+/* Error states for forms */
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #dc3545;
+}
+
+.form-group.error label {
+    color: #dc3545;
+}
+
+/* Loading state for buttons */
+.submit-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.submit-btn:disabled:hover {
+    background-color: #6c757d;
+    transform: none;
+}
+
+/* Active state for navigation */
+.nav-link.active {
+    border-bottom: 2px solid #333;
+    font-weight: 600;
+}
+
+/* Ensure sections are properly hidden */
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Smooth transitions for modals */
+.project-detail {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav li {
+        margin: 5px 10px;
+    }
+    
+    .nav-link {
+        font-size: 12px;
+    }
+}
+
+/* Focus states for accessibility */
+.nav-link:focus,
+.download-btn:focus,
+.submit-btn:focus,
+.close-project:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Project image hover improvements */
+.project-image {
+    transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.02);
+}
+
+/* Ensure clickable areas are obvious */
+.clickable-project {
+    cursor: pointer;
+}
+
+.click-hint {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.clickable-project:hover .click-hint {
+    opacity: 1;
+    transform: translateY(-2px);
+}
