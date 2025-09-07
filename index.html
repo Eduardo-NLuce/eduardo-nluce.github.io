@@ -20,9 +20,11 @@
     </header>
     
     <div class="container">
+        <!-- PORTFOLIO SECTION -->
         <section id="portfolio" class="active">
             <h1>Selected Projects</h1>
             <div class="portfolio-grid">
+                <!-- Project 1: Axochiapan -->
                 <div class="portfolio-item">
                     <div class="project-image clickable-project" data-project="axochiapan">
                         <img src="images/axochiapan-dome.jpg" alt="Axochiapan Dome Reconstruction">
@@ -34,9 +36,10 @@
                     </div>
                 </div>
 
+                <!-- Project 2: BHS Calculator -->
                 <div class="portfolio-item">
                     <div class="project-image clickable-project" data-project="bhs-calculator">
-                        <img src="images/baggage-carousel-calculator.jpg" alt="Baggage Carousel Calculator Grasshopper Plugin">
+                        <img src="images/baggage-carousel-calculator.jpg" alt="Baggage Carousel Calculator">
                         <div class="overlay">
                             <h2>Baggage Carousel Calculator</h2>
                             <p>Grasshopper Plugin · 2025</p>
@@ -45,9 +48,10 @@
                     </div>
                 </div>
 
+                <!-- Project 3: Dummy Flow -->
                 <div class="portfolio-item">
                     <div class="project-image clickable-project" data-project="dummy-flow">
-                        <img src="images/dummy-flow-simulation.jpg" alt="Dummy Flow Agent Simulation">
+                        <img src="images/dummy-flow-simulation.jpg" alt="Dummy Flow Simulation">
                         <div class="overlay">
                             <h2>Dummy Flow Simulation</h2>
                             <p>Grasshopper Components · 2025</p>
@@ -56,6 +60,7 @@
                     </div>
                 </div>
 
+                <!-- Project 4: Wings Soft Robotic -->
                 <div class="portfolio-item">
                     <div class="project-image clickable-project" data-project="wings-soft-robotic">
                         <img src="images/wings-soft-robotic.jpg" alt="Wings Soft Robotic Project">
@@ -68,21 +73,101 @@
                 </div>
             </div>
         </section>
+
+        <!-- TEXTS SECTION -->
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            <ul class="texts-list">
+                <li class="text-item">
+                    <h3>The Future of Sustainable Architecture</h3>
+                    <p>Exploring how new materials and technologies are shaping the way we think about environmentally conscious architecture in urban environments.</p>
+                    <span class="meta">Published in Architectural Review, May 2023</span>
+                </li>
+                <li class="text-item">
+                    <h3>Minimalism in Modern Architecture</h3>
+                    <p>How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement.</p>
+                    <span class="meta">Published in Design Quarterly, March 2023</span>
+                </li>
+                <li class="text-item">
+                    <h3>Computational Design in Heritage Conservation</h3>
+                    <p>Parametric approaches to historical building restoration and seismic reinforcement techniques.</p>
+                    <span class="meta">Published in Digital Heritage Journal, January 2023</span>
+                </li>
+            </ul>
+        </section>
         
-        <!-- Axochiapan Project Modal -->
-        <div id="project-axochiapan" class="project-detail" style="display: none;">
+        <!-- DOWNLOADS SECTION -->
+        <section id="downloads">
+            <h1>Resources & Components</h1>
+            <ul class="downloads-list">
+                <li class="download-item">
+                    <div>
+                        <h3>Baggage Carousel Calculator</h3>
+                        <p>Grasshopper component for airport baggage system design</p>
+                    </div>
+                    <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Dummy Flow Toolkit</h3>
+                        <p>Agent simulation + heat map components for passenger flow</p>
+                    </div>
+                    <a href="downloads/DummyFlow_Components.zip" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Wings Soft Robotic Research</h3>
+                        <p>UCL Bartlett research paper and documentation</p>
+                    </div>
+                    <a href="downloads/Wings_Soft_Robotic_Research.pdf" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Complete Portfolio PDF</h3>
+                        <p>Detailed portfolio with all projects and research</p>
+                    </div>
+                    <button class="download-btn" onclick="alert('Download started')">Download</button>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- PROJECT MODALS -->
+        <!-- Axochiapan Modal -->
+        <div id="project-axochiapan" class="project-detail">
             <div class="project-header">
                 <h3>Geometric Calculation & Parametrization for Dome Reconstruction</h3>
                 <button class="close-project">×</button>
             </div>
-            
             <div class="project-content">
                 <p class="project-meta">Collaborators: Arch. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
                 <p class="project-meta">Context: Post-earthquake reconstruction · Heritage conservation</p>
-                
                 <div class="project-description">
                     <p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p>
-                    
                     <h4>Technical Approach</h4>
                     <ul>
                         <li>Digital Documentation: Laser scanning and photogrammetry of damaged structure</li>
@@ -90,260 +175,70 @@
                         <li>Structural Analysis: Integration with finite element analysis plugins</li>
                         <li>Material Optimization: Parametric optimization of brick patterns and placement</li>
                     </ul>
-                    
-                    <h4>News References</h4>
-                    <div class="project-references">
-                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
-                            📰 Diario de Morelos - Temple Reconstruction in Axochiapan (2019)
-                        </a>
-                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
-                            🏛️ INAH - Reconstruction of Heritage Damaged by Earthquake
-                        </a>
-                        <a href="https://www.uaem.mx/noticias/archivo/2019/noviembre/191125a.html" target="_blank" class="news-link">
-                            📚 UAEM - Research on Heritage Reconstruction
-                        </a>
-                    </div>
-                    
-                    <h4>Academic Publications</h4>
-                    <div class="project-publications">
-                        <p>Ontiveros, M. (2019). <em>Parametric Approaches to Heritage Conservation: The Case of Mexican Colonial Churches</em>. Journal of Architectural Conservation.</p>
-                        <p>Oliva Salinas, J.G. (2020). <em>Computational Methods for Seismic Reinforcement of Historical Structures</em>. International Journal of Architectural Computing.</p>
-                        <a href="#" class="publication-link">📄 View full publication</a>
-                    </div>
-                    
-                    <p class="project-acknowledgement">Conducted with permission from Mexico's National Institute of Anthropology and History (INAH)</p>
                 </div>
             </div>
         </div>
 
         <!-- BHS Calculator Modal -->
-        <div id="project-bhs-calculator" class="project-detail" style="display: none;">
+        <div id="project-bhs-calculator" class="project-detail">
             <div class="project-header">
                 <h3>Baggage Carousel Calculator</h3>
                 <button class="close-project">×</button>
             </div>
-            
             <div class="project-content">
                 <p class="project-meta">Developer: Eduardo Luce · 2025</p>
                 <p class="project-meta">Category: Grasshopper Plugin · Parametric Airport Design</p>
-                
                 <div class="project-description">
-                    <h4>📖 Description</h4>
-                    <p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data. Optimizes spatial distribution in reclaim halls based on operational aircraft mix.</p>
-                    
-                    <div class="project-disclaimer">
-                        <strong>⚠️ Disclaimer:</strong> Conceptual planning tool developed by Eduardo Luce (2025). Does not replace professional calculation for operational implementations.
-                    </div>
-
+                    <p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data.</p>
                     <div class="project-download">
-                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>
-                            📦 Download Plugin (ZIP, 2.3 MB)
-                        </a>
-                        <p class="download-note">Includes .ghuser file + PDF documentation</p>
-                    </div>
-
-                    <h4>🎛️ Input Parameters</h4>
-                    <div class="technical-specs">
-                        <div class="spec-item">
-                            <span class="spec-name">Narrow Body Count</span>
-                            <span class="spec-desc">Number of narrow-body aircraft (A320/B737)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-name">Wide Body Count</span>
-                            <span class="spec-desc">Number of wide-body aircraft (B777/A350)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-name">Standard Length</span>
-                            <span class="spec-desc">Target length for standard carousels (meters)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-name">Operation Mode</span>
-                            <span class="spec-desc">1=Standard only, 2=Variable only, 3=Mixed mode</span>
-                        </div>
-                    </div>
-
-                    <h4>📤 Results and Outputs</h4>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">📐</div>
-                            <h5>Parametric Geometry</h5>
-                            <p>Automatic generation of 2D curves and 3D surfaces for each carousel</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📊</div>
-                            <h5>Capacity Calculations</h5>
-                            <p>Estimation of passengers, required area and optimal dimensions</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">⚙️</div>
-                            <h5>Spatial Optimization</h5>
-                            <p>Intelligent distribution with circulation buffers and spacing</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📝</div>
-                            <h5>Automatic Reporting</h5>
-                            <p>Generation of summary with technical data and IATA references</p>
-                        </div>
-                    </div>
-
-                    <h4>📚 Implemented Standards</h4>
-                    <div class="standards-list">
-                        <div class="standard-item">
-                            <span class="standard-badge">IATA</span>
-                            <span>Airport Development Reference Manual (ADRM) 9th Edition</span>
-                        </div>
-                        <div class="standard-item">
-                            <span class="standard-badge">FAA</span>
-                            <span>Advisory Circular 150/5360-13A, Planning and Design Guidelines</span>
-                        </div>
-                        <div class="standard-item">
-                            <span class="standard-badge">ICAO</span>
-                            <span>Annex 14 - Aerodromes, Volume I - Aerodrome Design and Operations</span>
-                        </div>
-                    </div>
-
-                    <h4>🛠️ Technical Requirements</h4>
-                    <div class="requirements">
-                        <div class="req-item">
-                            <strong>Software:</strong> Rhinoceros 7+ and Grasshopper
-                        </div>
-                        <div class="req-item">
-                            <strong>Components:</strong> Standard Grasshopper (no additional plugins required)
-                        </div>
-                        <div class="req-item">
-                            <strong>Installation:</strong> Copy .ghuser file to Grasshopper components folder
-                        </div>
-                    </div>
-
-                    <div class="usage-guide">
-                        <h4>🚀 Quick Usage Guide</h4>
-                        <ol>
-                            <li>Download and unzip the file</li>
-                            <li>Copy <code>BaggageCarouselCalculator.ghuser</code> to Grasshopper components folder</li>
-                            <li>Restart Rhino and Grasshopper</li>
-                            <li>Search for "Baggage Carousel Calculator" in Grasshopper components</li>
-                            <li>Connect inputs and visualize results</li>
-                        </ol>
+                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>📦 Download Plugin</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Dummy Flow Project Modal -->
-        <div id="project-dummy-flow" class="project-detail" style="display: none;">
+        <!-- Dummy Flow Modal -->
+        <div id="project-dummy-flow" class="project-detail">
             <div class="project-header">
-                <h3>Dummy Flow - Agent Simulation & Heat Map Components</h3>
+                <h3>Dummy Flow - Agent Simulation</h3>
                 <button class="close-project">×</button>
             </div>
-            
             <div class="project-content">
                 <p class="project-meta">Developer: Eduardo Luce · 2025</p>
-                <p class="project-meta">Category: Grasshopper Plugin · Agent-based Simulation · Personal Project</p>
-                
                 <div class="project-description">
-                    <div class="project-context">
-                        <p>🌟 <strong>Personal Research Project</strong> - Developed during spare time as part of ongoing research into passenger flow simulation and terminal design optimization.</p>
-                    </div>
-
-                    <h4>📖 Overview</h4>
-                    <p>The Dummy Flow toolkit consists of two complementary Grasshopper components for simulating agent movement and visualizing spatial usage patterns in architectural environments.</p>
-
-                    <!-- Video Demonstration Section -->
-                    <div class="video-demo">
-                        <h4>🎥 Live Demonstration</h4>
-                        <div class="video-container">
-                            <video controls poster="images/dummy-flow-preview.jpg">
-                                <source src="videos/dummy-flow-demo.mp4" type="video/mp4">
-                                <source src="videos/dummy-flow-demo.webm" type="video/webm">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="video-caption">
-                                <p>Demonstration of agent simulation and heat map generation in Grasshopper</p>
-                                <div class="video-download">
-                                    <a href="videos/dummy-flow-demo.mp4" download class="download-btn-small">📥 Download Video</a>
-                                    <span class="video-duration">Duration: 2:45 | Size: 15.2 MB</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="components-grid">
-                        <div class="component-card">
-                            <h5>🔥 Heat Map Mesh Component</h5>
-                            <p>Converts agent trajectories into traffic density visualization over defined boundaries. Samples paths across customizable grids and outputs colorized meshes showing congestion intensity.</p>
-                            
-                            <div class="component-features">
-                                <span class="feature-tag">Density Visualization</span>
-                                <span class="feature-tag">Grid Analysis</span>
-                                <span class="feature-tag">Color Mapping</span>
-                            </div>
-                        </div>
-
-                        <div class="component-card">
-                            <h5>👥 Agent Simulation Component</h5>
-                            <p>Simulates moving agents within 2D boundaries while avoiding obstacles and following assigned targets. Agents behave like pedestrians with realistic movement patterns.</p>
-                            
-                            <div class="component-features">
-                                <span class="feature-tag">Obstacle Avoidance</span>
-                                <span class="feature-tag">Path Finding</span>
-                                <span class="feature-tag">Behavior Simulation</span>
-                            </div>
-                        </div>
-                    </div>
-
+                    <p>Agent-based simulation components for Grasshopper to simulate passenger flow and spatial usage patterns.</p>
                     <div class="project-download">
-                        <a href="downloads/DummyFlow_Components.zip" class="download-btn-large" download>
-                            📦 Download Complete Toolkit (ZIP, 3.8 MB)
-                        </a>
-                        <p class="download-note">Includes both components (.ghuser) + documentation + example files</p>
-                        
-                        <div class="individual-downloads">
-                            <a href="downloads/HeatMapMesh.ghuser" class="download-btn-small" download>🔥 Heat Map Component</a>
-                            <a href="downloads/AgentSimulation.ghuser" class="download-btn-small" download>👥 Agent Simulation</a>
-                        </div>
+                        <a href="downloads/DummyFlow_Components.zip" class="download-btn-large" download>📦 Download Toolkit</a>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <h4>🎛️ Technical Specifications</h4>
-                    <div class="technical-grid">
-                        <div class="tech-column">
-                            <h5>Heat Map Mesh Inputs</h5>
-                            <ul>
-                                <li><strong>Paths:</strong> Agent trajectory polylines</li>
-                                <li><strong>Boundary:</strong> Analysis area definition</li>
-                                <li><strong>Grid Size:</strong> Resolution control (10-100)</li>
-                                <li><strong>Live Update:</strong> Real-time computation toggle</li>
-                            </ul>
-                        </div>
-                        <div class="tech-column">
-                            <h5>Agent Simulation Inputs</h5>
-                            <ul>
-                                <li><strong>Start/End Points:</strong> Agent routing</li>
-                                <li><strong>Obstacles:</strong> Navigation constraints</li>
-                                <li><strong>Behavior Parameters:</strong> Wait times, linger</li>
-                                <li><strong>Simulation Controls:</strong> Reset, spawn rates</li>
-                            </ul>
-                        </div>
-                        <div class="tech-column">
-                            <h5>Outputs</h5>
-                            <ul>
-                                <li>Colored density meshes</li>
-                                <li>Agent position data</li>
-                                <li>Path visualization</li>
-                                <li>Simulation analytics</li>
-                            </ul>
-                        </div>
+        <!-- Wings Soft Robotic Modal -->
+        <div id="project-wings-soft-robotic" class="project-detail">
+            <div class="project-header">
+                <h3>Wings: Soft Robotic Architecture</h3>
+                <button class="close-project">×</button>
+            </div>
+            <div class="project-content">
+                <p class="project-meta">UCL Bartlett School of Architecture · 2023</p>
+                <div class="project-description">
+                    <p>Bio-inspired soft robotic system for adaptive architectural environments developed at UCL Bartlett.</p>
+                    <div class="project-download">
+                        <a href="downloads/Wings_Soft_Robotic_Research.pdf" class="download-btn-large" download>📄 Research Paper</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
 
-                    <h4>🛠️ Installation & Usage</h4>
-                    <div class="usage-steps">
-                        <div class="step">
-                            <span class="step-number">1</span>
-                            <p>Download and extract the ZIP file</p>
-                        </div>
-                        <div class="step">
-                            <span class="step-number">2</span>
-                            <p>Copy .ghuser files to Grasshopper components folder</p>
-                        </div>
-                        <div class="step">
-                            <span class="step-number">3</span>
-                            <p>Res
+    <!-- Overlay for modals -->
+    <div class="project-overlay"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
