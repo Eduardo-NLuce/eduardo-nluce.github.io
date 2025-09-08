@@ -1,0 +1,2231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            opacity: 0.7;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f8f8;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo {
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        nav a.active {
+            border-bottom: 2px solid #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 40px;
+        }
+        
+        section {
+            margin-bottom: 80px;
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .portfolio-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        .texts-list {
+            list-style: none;
+        }
+        
+        .text-item {
+            padding: 25px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .text-item h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .text-item p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .text-item .meta {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .downloads-list {
+            list-style: none;
+        }
+        
+        .download-item {
+            padding: 25px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .download-item h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .download-item p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .download-btn {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .download-btn:hover {
+            background-color: #555;
+        }
+        
+        .contact-info {
+            margin-bottom: 40px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            font-family: inherit;
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Estilos para proyectos clickeables */
+        .clickable-project {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .clickable-project:hover {
+            transform: scale(1.02);
+        }
+        
+        .click-hint {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .clickable-project:hover .click-hint {
+            opacity: 1;
+        }
+        
+        /* Modal de proyecto */
+        .project-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+        
+        .project-header h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .close-project {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-project:hover {
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        /* Overlay de fondo */
+        .project-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            display: none;
+        }
+        
+        /* Estilos específicos para contenido de proyectos */
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .project-description h4 {
+            margin: 25px 0 15px 0;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .project-description ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .project-description li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .project-references {
+            margin: 20px 0;
+        }
+        
+        .news-link {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background: #f8f8f8;
+            border-left: 4px solid #333;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .news-link:hover {
+            background: #eee;
+            transform: translateX(5px);
+        }
+        
+        .project-publications {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #333;
+            margin: 25px 0;
+        }
+        
+        .publication-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        
+        .project-acknowledgement {
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Estilos para BHS Calculator */
+        .project-download {
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .download-btn-large {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .download-btn-large:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .download-note {
+            font-size: 14px;
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        .technical-specs {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .spec-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .spec-name {
+            font-weight: 600;
+            min-width: 200px;
+            color: #495057;
+        }
+        
+        .spec-desc {
+            color: #6c757d;
+            flex: 1;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item h5 {
+            margin: 10px 0;
+            color: #212529;
+        }
+        
+        .standards-list {
+            margin: 20px 0;
+        }
+        
+        .standard-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .standard-badge {
+            background: #007bff;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 15px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .requirements {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .req-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .req-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .usage-guide {
+            background: #fff3cd;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .usage-guide ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .usage-guide li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .usage-guide code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e83e8c;
+        }
+        
+        .project-disclaimer {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        /* Dummy Flow Specific Styles */
+        .project-context {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .project-context p {
+            margin: 0;
+            color: white;
+        }
+        
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .component-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .component-card h5 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .component-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .feature-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .individual-downloads {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .download-btn-small {
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn-small:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .tech-column {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid #28a745;
+        }
+        
+        .tech-column h5 {
+            color: #212529;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .tech-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tech-column li {
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .tech-column li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .tech-column li:last-child {
+            border-bottom: none;
+        }
+        
+        .usage-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        /* Video Demo Styles */
+        .video-demo {
+            margin: 30px 0;
+        }
+        
+        .video-container {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+        
+        .video-caption {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .video-caption p {
+            margin: 0 0 15px 0;
+            color: #495057;
+            font-size: 14px;
+        }
+        
+        .video-download {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .video-duration {
+            color: #6c757d;
+            font-size: 13px;
+        }
+        
+        /* UCL Bartlett Project Styles */
+        .research-context {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 4px solid #7d3c98;
+        }
+        
+        .institution-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .institution-logo {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .institution-logo span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .research-focus ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .research-focus li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .research-focus li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #7d3c98;
+            font-weight: bold;
+        }
+        
+        .research-methodology {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .methodology-step {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .methodology-step:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .academic-context {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .academic-context h4, .academic-context h5 {
+            color: white;
+        }
+        
+        .academic-context ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .academic-context li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .academic-context li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .publication-info {
+            margin-top: 20px;
+        }
+        
+        .publication-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+        }
+        
+        .publication-date {
+            background: white;
+            color: #7d3c98;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 15px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .recognition {
+            margin: 30px 0;
+        }
+        
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .award-item {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+        
+        .award-item:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+        }
+        
+        .award-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Research Team Styles */
+        .research-team {
+            margin: 30px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: #667eea;
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 auto 15px;
+        }
+        
+        .team-member h5 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+        
+        .team-member p {
+            color: #666;
+            font-size: 14px;
+            margin: 2px 0;
+        }
+        
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .blog-post {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .blog-post-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-content {
+            padding: 25px;
+        }
+        
+        .blog-post h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .blog-date {
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        .blog-category {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .blog-read-more {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .blog-read-more:hover {
+            background: #2980b9;
+        }
+        
+        /* Blog Modal */
+        .blog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+        }
+        
+        .blog-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .blog-modal-content {
+            position: relative;
+            background: white;
+            margin: 50px auto;
+            max-width: 800px;
+            max-height: 80vh;
+            border-radius: 15px;
+            overflow: hidden;
+            z-index: 2001;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .blog-modal-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .blog-close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .blog-close-modal:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .blog-modal-header h2 {
+            margin: 0 0 15px 0;
+            font-size: 2em;
+            line-height: 1.3;
+        }
+        
+        .blog-modal-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .blog-modal-body {
+            padding: 40px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        #blog-modal-content {
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #2c3e50;
+        }
+        
+        #blog-modal-content h3 {
+            color: #2c3e50;
+            margin: 30px 0 15px 0;
+            font-size: 1.4em;
+        }
+        
+        #blog-modal-content p {
+            margin-bottom: 20px;
+        }
+        
+        #blog-modal-content ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        #blog-modal-content li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        #blog-modal-content li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+        
+        /* Error states for forms */
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #dc3545;
+        }
+        
+        .form-group.error label {
+            color: #dc3545;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* Loading state for buttons */
+        .submit-btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn:disabled:hover {
+            background-color: #6c757d;
+            transform: none;
+        }
+        
+        /* Focus states for accessibility */
+        .nav-link:focus,
+        .download-btn:focus,
+        .submit-btn:focus,
+        .close-project:focus,
+        .blog-read-more:focus,
+        .blog-close-modal:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0;
+            }
+            
+            .container {
+                padding: 0 20px;
+                margin-top: 140px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .download-btn {
+                align-self: flex-end;
+            }
+            
+            .spec-item {
+                flex-direction: column;
+            }
+            
+            .spec-name {
+                margin-bottom: 5px;
+                min-width: auto;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .standard-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .standard-badge {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            .project-detail {
+                width: 95%;
+                height: 90vh;
+                max-height: none;
+            }
+            
+            .project-header {
+                padding: 20px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .click-hint {
+                display: none;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .technical-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .usage-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .individual-downloads {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn-small {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .video-download {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .institution-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .research-methodology {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .blog-modal-content {
+                margin: 20px;
+                max-height: 85vh;
+            }
+            
+            .blog-modal-header {
+                padding: 20px;
+            }
+            
+            .blog-modal-body {
+                padding: 25px;
+            }
+            
+            .blog-modal-header h2 {
+                font-size: 1.6em;
+                padding-right: 40px;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .blog-post-content {
+                padding: 20px;
+            }
+            
+            .blog-modal-header h2 {
+                font-size: 1.4em;
+            }
+            
+            .blog-modal-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Eduardo Luce MArch</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="texts">Texts</a></li>
+                <li><a href="#" class="nav-link" data-section="downloads">Downloads</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- PORTFOLIO SECTION -->
+        <section id="portfolio" class="active">
+            <h1>Selected Projects</h1>
+            <div class="portfolio-grid">
+                <!-- Project 1: Axochiapan -->
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="axochiapan">
+                        <img src="images/axochiapan-dome.jpg" alt="Axochiapan Dome Reconstruction">
+                        <div class="overlay">
+                            <h2>Dome Reconstruction - Axochiapan Church</h2>
+                            <p>Axochiapan, Morelos · 2019-2020</p>
+                            <div class="click-hint">↗ Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: BHS Calculator -->
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="bhs-calculator">
+                        <img src="images/baggage-carousel-calculator.jpg" alt="Baggage Carousel Calculator">
+                        <div class="overlay">
+                            <h2>Baggage Carousel Calculator</h2>
+                            <p>Grasshopper Plugin · 2025</p>
+                            <div class="click-hint">↗ Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Dummy Flow -->
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="dummy-flow">
+                        <img src="images/dummy-flow-simulation.jpg" alt="Dummy Flow Simulation">
+                        <div class="overlay">
+                            <h2>Dummy Flow Simulation</h2>
+                            <p>Grasshopper Components · 2025</p>
+                            <div class="click-hint">↗ Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Wings Soft Robotic -->
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="wings-soft-robotic">
+                        <img src="images/wings-soft-robotic.jpg" alt="Wings Soft Robotic Project">
+                        <div class="overlay">
+                            <h2>Wings Soft Robotic</h2>
+                            <p>UCL Bartlett · 2023</p>
+                            <div class="click-hint">↗ Click for details</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEXTS SECTION -->
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-post" data-post="sustainable-architecture">
+                    <div class="blog-post-image">
+                        <img src="images/blog-sustainable-architecture.jpg" alt="Sustainable Architecture">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>The Future of Sustainable Architecture</h3>
+                        <p class="blog-excerpt">Exploring how new materials and technologies are shaping the way we think about environmentally conscious architecture in urban environments...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">May 15, 2023</span>
+                            <span class="blog-category">Architectural Review</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post" data-post="minimalism-architecture">
+                    <div class="blog-post-image">
+                        <img src="images/blog-minimalism.jpg" alt="Minimalism in Architecture">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Minimalism in Modern Architecture</h3>
+                        <p class="blog-excerpt">How the principles of minimalism have influenced contemporary architectural design and what we can learn from this movement that continues to shape our built environment...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">March 22, 2023</span>
+                            <span class="blog-category">Design Quarterly</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post" data-post="computational-heritage">
+                    <div class="blog-post-image">
+                        <img src="images/blog-heritage.jpg" alt="Computational Heritage">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Computational Design in Heritage Conservation</h3>
+                        <p class="blog-excerpt">Parametric approaches to historical building restoration and seismic reinforcement techniques that are revolutionizing how we preserve our architectural heritage...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">January 8, 2023</span>
+                            <span class="blog-category">Digital Heritage Journal</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post" data-post="soft-robotics">
+                    <div class="blog-post-image">
+                        <img src="images/blog-robotics.jpg" alt="Soft Robotics">
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Soft Robotics in Adaptive Architecture</h3>
+                        <p class="blog-excerpt">Exploring the intersection of biomimetic design and robotic systems to create responsive architectural environments that adapt to human needs and environmental conditions...</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">November 12, 2022</span>
+                            <span class="blog-category">Robotic Architecture Review</span>
+                        </div>
+                        <button class="blog-read-more">Read Full Article</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- DOWNLOADS SECTION -->
+        <section id="downloads">
+            <h1>Resources & Components</h1>
+            <ul class="downloads-list">
+                <li class="download-item">
+                    <div>
+                        <h3>Baggage Carousel Calculator</h3>
+                        <p>Grasshopper component for airport baggage system design</p>
+                    </div>
+                    <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Dummy Flow Toolkit</h3>
+                        <p>Agent simulation + heat map components for passenger flow</p>
+                    </div>
+                    <a href="downloads/DummyFlow_Components.zip" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Wings Soft Robotic Research</h3>
+                        <p>UCL Bartlett research paper and documentation</p>
+                    </div>
+                    <a href="downloads/Wings_Soft_Robotic_Research.pdf" class="download-btn" download>Download</a>
+                </li>
+                <li class="download-item">
+                    <div>
+                        <h3>Complete Portfolio PDF</h3>
+                        <p>Detailed portfolio with all projects and research</p>
+                    </div>
+                    <button class="download-btn" onclick="alert('Download started')">Download</button>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- CONTACT SECTION -->
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- PROJECT MODALS -->
+        <!-- Axochiapan Modal -->
+        <div id="project-axochiapan" class="project-detail">
+            <div class="project-header">
+                <h3>Geometric Calculation & Parametrization for Dome Reconstruction</h3>
+                <button class="close-project">×</button>
+            </div>
+            <div class="project-content">
+                <p class="project-meta">Collaborators: Arch. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
+                <p class="project-meta">Context: Post-earthquake reconstruction · Heritage conservation</p>
+                
+                <div class="project-description">
+                    <p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p>
+                    
+                    <p>The seismic event caused significant structural damage to the 18th-century church's dome, requiring precise digital documentation and parametric modeling to guide restoration efforts. Using photogrammetry and laser scanning technologies, we captured the existing conditions and developed a parametric model that respected the original architectural intent while incorporating necessary seismic reinforcements.</p>
+
+                    <h4>Technical Approach</h4>
+                    <ul>
+                        <li><strong>Digital Documentation:</strong> Laser scanning and photogrammetry of damaged structure</li>
+                        <li><strong>Parametric Modeling:</strong> Grasshopper definition for dome geometry reconstruction</li>
+                        <li><strong>Structural Analysis:</strong> Integration with finite element analysis plugins</li>
+                        <li><strong>Material Optimization:</strong> Parametric optimization of brick patterns and placement</li>
+                        <li><strong>Construction Guidance:</strong> Generation of fabrication templates and assembly sequences</li>
+                    </ul>
+
+                    <h4>Research Context</h4>
+                    <p>The 2017 Puebla earthquake (7.1 magnitude) damaged numerous historical buildings throughout central Mexico, with churches being particularly vulnerable due to their age and construction techniques. The reconstruction of Axochiapan's main church represents an important case study in combining traditional restoration methods with contemporary computational design approaches.</p>
+
+                    <h4>Project Significance</h4>
+                    <p>This project demonstrates how computational design and parametric modeling can serve heritage conservation, particularly in post-disaster scenarios where traditional documentation methods may be insufficient. The Grasshopper-based workflow allowed for accurate reproduction of complex geometric relationships and integration of seismic reinforcement strategies within historical constraints.</p>
+
+                    <div class="project-references">
+                        <h4>References</h4>
+                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
+                            📰 Diario de Morelos - Temple Reconstruction in Axochiapan (2019)
+                        </a>
+                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
+                            🏛️ INAH - Reconstruction of Heritage Damaged by Earthquake
+                        </a>
+                    </div>
+
+                    <p class="project-acknowledgement">Conducted with permission from Mexico's National Institute of Anthropology and History (INAH)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BHS Calculator Modal -->
+        <div id="project-bhs-calculator" class="project-detail">
+            <div class="project-header">
+                <h3>Baggage Carousel Calculator</h3>
+                <button class="close-project">×</button>
+            </div>
+            <div class="project-content">
+                <p class="project-meta">Developer: Eduardo Luce · 2025</p>
+                <p class="project-meta">Category: Grasshopper Plugin · Parametric Airport Design</p>
+                
+                <div class="project-description">
+                    <h4>📖 Description</h4>
+                    <p>The Baggage Handling System (BHS) Carousel Calculator is a design tool for quickly estimating baggage reclaim carousel layouts based on aircraft mix and IATA standards.</p>
+                    
+                    <p>It helps planners and designers test different scenarios for narrow-body and wide-body aircraft, calculate the number and dimensions of required carousels, visualize their geometry in Grasshopper, and estimate total passenger capacity and floor area requirements.</p>
+
+                    <div class="project-disclaimer">
+                        <strong>⚠️ Disclaimer:</strong> Developed by Eduardo Luce (2025) as a Work-in-Progress (WIP) research and planning tool. This tool is not intended for operational deployment without professional verification of all data.
+                    </div>
+
+                    <div class="project-download">
+                        <a href="downloads/BaggageCarouselCalculator.zip" class="download-btn-large" download>
+                            📦 Download Plugin (ZIP, 2.3 MB)
+                        </a>
+                        <p class="download-note">Includes .ghuser file + PDF documentation</p>
+                    </div>
+
+                    <h4>🎛️ Input Parameters</h4>
+                    <div class="technical-specs">
+                        <div class="spec-item">
+                            <span class="spec-name">Narrow Count (int)</span>
+                            <span class="spec-desc">Number of narrow-body aircraft (e.g., A320/B737 class)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Wide Count (int)</span>
+                            <span class="spec-desc">Number of wide-body aircraft (e.g., B777, A350 class)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Standard Length (float)</span>
+                            <span class="spec-desc">Target equalized carousel length (m) for standard sizing</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Draw Mode (int)</span>
+                            <span class="spec-desc">1 = Standard only | 2 = Variable only | 3 = Both</span>
+                        </div>
+                    </div>
+
+                    <h4>📤 Outputs</h4>
+                    <div class="technical-specs">
+                        <div class="spec-item">
+                            <span class="spec-name">Carousel Outlines</span>
+                            <span class="spec-desc">Outer + inner offset curves grouped in pairs</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Clearance Zones</span>
+                            <span class="spec-desc">Clearance boundary curves around each carousel</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Estimated Floor Area</span>
+                            <span class="spec-desc">Sum of carousel footprint + clearances (m²)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-name">Passenger Capacity</span>
+                            <span class="spec-desc">Estimated passengers based on aircraft input</span>
+                        </div>
+                    </div>
+
+                    <h4>📚 References & Standards</h4>
+                    <div class="standards-list">
+                        <div class="standard-item">
+                            <span class="standard-badge">IATA</span>
+                            <span>Airport Development Reference Manual, 9th Edition (2014)</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">FAA</span>
+                            <span>Advisory Circular 150/5360-13A, Planning and Design Guidelines</span>
+                        </div>
+                        <div class="standard-item">
+                            <span class="standard-badge">ICAO</span>
+                            <span>Annex 14 - Aerodromes, Volume I - Aerodrome Design and Operations</span>
+                        </div>
+                    </div>
+
+                    <h4>⚙️ Installation Guide</h4>
+                    <div class="usage-guide">
+                        <ol>
+                            <li>Save the provided .gha or Grasshopper user object (.ghuser)</li>
+                            <li>Place it in your Grasshopper Libraries folder</li>
+                            <li>Restart Grasshopper</li>
+                            <li>The BHS Carousel Calculator will appear as a custom component</li>
+                        </ol>
+                    </div>
+
+                    <div class="project-disclaimer">
+                        <strong>Designed by Eduardo Luce — 2025</strong><br>
+                        This tool is a Work In Progress (WIP). It is not validated for operational airport design and should only be used for conceptual planning and educational purposes. All results must be verified against official design standards and real project data.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dummy Flow Modal -->
+        <div id="project-dummy-flow" class="project-detail">
+            <div class="project-header">
+                <h3>Dummy Flow - Agent Simulation & Heat Map Components</h3>
+                <button class="close-project">×</button>
+            </div>
+            <div class="project-content">
+                <p class="project-meta">Developer: Eduardo Luce · 2025</p>
+                <p class="project-meta">Category: Grasshopper Plugin · Agent-based Simulation · Personal Project</p>
+                
+                <div class="project-description">
+                    <div class="project-context">
+                        <p>🌟 <strong>Personal Research Project</strong> - Developed during spare time as part of ongoing research into passenger flow simulation and terminal design optimization.</p>
+                    </div>
+
+                    <h4>📖 Overview</h4>
+                    <p>The Dummy Flow toolkit consists of two complementary Grasshopper components for simulating agent movement and visualizing spatial usage patterns in architectural environments.</p>
+
+                    <div class="components-grid">
+                        <div class="component-card">
+                            <h5>🔥 Heat Map Mesh Component</h5>
+                            <p>Converts agent trajectories into traffic density visualization over defined boundaries. Samples paths across customizable grids and outputs colorized meshes showing congestion intensity.</p>
+                            
+                            <div class="component-features">
+                                <span class="feature-tag">Density Visualization</span>
+                                <span class="feature-tag">Grid Analysis</span>
+                                <span class="feature-tag">Color Mapping</span>
+                            </div>
+                        </div>
+
+                        <div class="component-card">
+                            <h5>👥 Agent Simulation Component</h5>
+                            <p>Simulates moving agents within 2D boundaries while avoiding obstacles and following assigned targets. Agents behave like pedestrians with realistic movement patterns.</p>
+                            
+                            <div class="component-features">
+                                <span class="feature-tag">Obstacle Avoidance</span>
+                                <span class="feature-tag">Path Finding</span>
+                                <span class="feature-tag">Behavior Simulation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-download">
+                        <a href="downloads/DummyFlow_Components.zip" class="download-btn-large" download>
+                            📦 Download Complete Toolkit (ZIP, 3.8 MB)
+                        </a>
+                        <p class="download-note">Includes both components (.ghuser) + documentation + example files</p>
+                        
+                        <div class="individual-downloads">
+                            <a href="downloads/HeatMapMesh.ghuser" class="download-btn-small" download>🔥 Heat Map Component</a>
+                            <a href="downloads/AgentSimulation.ghuser" class="download-btn-small" download>👥 Agent Simulation</a>
+                        </div>
+                    </div>
+
+                    <h4>🎛️ Technical Specifications</h4>
+                    <div class="technical-grid">
+                        <div class="tech-column">
+                            <h5>Heat Map Mesh Inputs</h5>
+                            <ul>
+                                <li><strong>Paths:</strong> Agent trajectory polylines</li>
+                                <li><strong>Boundary:</strong> Analysis area definition</li>
+                                <li><strong>Grid Size:</strong> Resolution control (10-100)</li>
+                                <li><strong>Live Update:</strong> Real-time computation toggle</li>
+                            </ul>
+                        </div>
+                        <div class="tech-column">
+                            <h5>Agent Simulation Inputs</h5>
+                            <ul>
+                                <li><strong>Start/End Points:</strong> Agent routing</li>
+                                <li><strong>Obstacles:</strong> Navigation constraints</li>
+                                <li><strong>Behavior Parameters:</strong> Wait times, linger</li>
+                                <li><strong>Simulation Controls:</strong> Reset, spawn rates</li>
+                            </ul>
+                        </div>
+                        <div class="tech-column">
+                            <h5>Outputs</h5>
+                            <ul>
+                                <li>Colored density meshes</li>
+                                <li>Agent position data</li>
+                                <li>Path visualization</li>
+                                <li>Simulation analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4>🛠️ Installation & Usage</h4>
+                    <div class="usage-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <p>Download and extract the ZIP file</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <p>Copy .ghuser files to Grasshopper components folder</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <p>Restart Rhino and Grasshopper</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <p>Find components in Grasshopper toolbar</p>
+                        </div>
+                    </div>
+
+                    <div class="project-context">
+                        <h4>💡 Project Context</h4>
+                        <p>This personal research project was developed during spare time to explore agent-based simulation techniques for architectural design. The components integrate with the Baggage Carousel Calculator to provide a comprehensive terminal design toolkit.</p>
+                        
+                        <p><strong>Research Applications:</strong> Passenger flow analysis, space utilization optimization, congestion prediction, and terminal layout validation.</p>
+                    </div>
+
+                    <div class="project-disclaimer">
+                        <strong>⚠️ Disclaimer:</strong> These components are personal research tools developed by Eduardo Luce (2025). They are intended for conceptual design and educational purposes only. Not validated for operational use or safety-critical applications.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wings Soft Robotic Modal -->
+        <div id="project-wings-soft-robotic" class="project-detail">
+            <div class="project-header">
+                <h3>Wings: Soft Robotic Architecture</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">UCL Bartlett School of Architecture · Research Project · 2023</p>
+                <p class="project-meta">Team: Eduardo Luce (MArch) with Adaptive Environments Research Group</p>
+                
+                <div class="project-description">
+                    <div class="project-context">
+                        <p>🌟 <strong>UCL Bartlett Research Project</strong> - Developed during Master's studies at The Bartlett School of Architecture, exploring bio-inspired soft robotic systems for adaptive architectural environments.</p>
+                    </div>
+
+                    <h4>📖 Project Overview</h4>
+                    <p>Wings is an innovative soft robotic system that explores biomimetic principles to create responsive architectural surfaces capable of dynamic shape-shifting and environmental adaptation. The project investigates the intersection of material science, robotics, and architectural design.</p>
+
+                    <!-- Research Team -->
+                    <div class="research-team">
+                        <h4>👥 Research Team</h4>
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <div class="member-avatar">EL</div>
+                                <h5>Eduardo Luce</h5>
+                                <p>Project Lead · Soft Robotics</p>
+                                <p>MArch Student, UCL Bartlett</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">VS</div>
+                                <h5>Valentina Soana</h5>
+                                <p>Material Research · Fabrication</p>
+                                <p>Research Assistant</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">SC</div>
+                                <h5>Shaharam</h5>
+                                <p>Control Systems · Electronics</p>
+                                <p>Engineering Consultant</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">YX</div>
+                                <h5>Yue Xu</h5>
+                                <p>Biomimetic Design · Analysis</p>
+                                <p>Research Collaborator</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">YL</div>
+                                <h5>Yuting Lei</h5>
+                                <p>Computational Design · Simulation</p>
+                                <p>Research Collaborator</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Research Context -->
+                    <div class="research-context">
+                        <h4>🎓 Research Context at UCL Bartlett</h4>
+                        <p>This project was developed within the renowned <strong>Interactive Architecture Lab</strong> at UCL Bartlett, known for pioneering work in responsive environments and robotic architecture. The research contributes to the field of adaptive building skins and responsive spatial systems.</p>
+                        
+                        <div class="institution-info">
+                            <div class="institution-logo">
+                                <span>🏛️</span>
+                                <h5>UCL Bartlett School of Architecture</h5>
+                                <p>Ranked #1 in the world for Architecture (QS World University Rankings 2023)</p>
+                            </div>
+                            <div class="research-focus">
+                                <h5>Research Focus Areas:</h5>
+                                <ul>
+                                    <li>Adaptive and responsive architectures</li>
+                                    <li>Robotic fabrication and systems</li>
+                                    <li>Bio-inspired design methodologies</li>
+                                    <li>Human-building interaction</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Specifications -->
+                    <h4>⚙️ Technical Innovation</h4>
+                    <div class="technical-grid">
+                        <div class="tech-column">
+                            <h5>Soft Robotic System</h5>
+                            <ul>
+                                <li><strong>Material:</strong> Silicone-based composites with embedded actuators</li>
+                                <li><strong>Actuation:</strong> Pneumatic control system with precision valves</li>
+                                <li><strong>Control:</strong> Arduino-based feedback system</li>
+                                <li><strong>Response Time:</strong> <200ms actuation response</li>
+                            </ul>
+                        </div>
+                        <div class="tech-column">
+                            <h5>Biomimetic Principles</h5>
+                            <ul>
+                                <li>Bird wing morphology inspiration</li>
+                                <li>Adaptive surface tension control</li>
+                                <li>Multi-scale actuation patterns</li>
+                                <li>Environmental responsiveness</li>
+                            </ul>
+                        </div>
+                        <div class="tech-column">
+                            <h5>Architectural Applications</h5>
+                            <ul>
+                                <li>Dynamic facades and building skins</li>
+                                <li>Adaptive interior partitions</li>
+                                <li>Responsive shading systems</li>
+                                <li>Interactive spatial elements</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project Documentation -->
+                    <div class="project-download">
+                        <h4>📚 Research Documentation</h4>
+                        <a href="downloads/Wings_Soft_Robotic_Research.pdf" class="download-btn-large" download>
+                            📄 Download Research Paper (PDF, 4.2 MB)
+                        </a>
+                        <p class="download-note">Complete technical documentation, methodology, and findings</p>
+                        
+                        <div class="individual-downloads">
+                            <a href="downloads/Wings_Technical_Specifications.pdf" class="download-btn-small" download>📋 Technical Specifications</a>
+                            <a href="downloads/Wings_Fabrication_Guide.pdf" class="download-btn-small" download>🛠️ Fabrication Guide</a>
+                            <a href="downloads/Wings_Code_Repository.zip" class="download-btn-small" download>💻 Control Code</a>
+                        </div>
+                    </div>
+
+                    <!-- Academic Context -->
+                    <div class="academic-context">
+                        <h4>🎓 Academic Contribution</h4>
+                        <p>This research contributes to the ongoing discourse at UCL Bartlett on:</p>
+                        <ul>
+                            <li>Adaptive architectural systems</li>
+                            <li>Human-building interaction paradigms</li>
+                            <li>Sustainable responsive environments</li>
+                            <li>Bio-digital fabrication methodologies</li>
+                        </ul>
+                    </div>
+
+                    <!-- Exhibition & Recognition -->
+                    <div class="recognition">
+                        <h4>🏆 Recognition</h4>
+                        <div class="awards-grid">
+                            <div class="award-item">
+                                <span class="award-icon">⭐</span>
+                                <h5>Bartlett Research Excellence Award</h5>
+                                <p>2023 - Outstanding Innovation in Architectural Technology</p>
+                            </div>
+                            <div class="award-item">
+                                <span class="award-icon">🏅</span>
+                                <h5>Featured in Bartlett Summer Show</h5>
+                                <p>2023 - Selected for annual exhibition</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-disclaimer">
+                        <strong>📝 Academic Project:</strong> This research was conducted as part of the MArch program at UCL Bartlett School of Architecture under the supervision of the Adaptive Environments Research Group. All intellectual property belongs to UCL and the research team.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Post Modals -->
+        <div id="blog-modal" class="blog-modal">
+            <div class="blog-modal-content">
+                <button class="blog-close-modal">×</button>
+                <div class="blog-modal-header">
+                    <h2 id="blog-modal-title"></h2>
+                    <div class="blog-modal-meta">
+                        <span id="blog-modal-date"></span>
+                        <span id="blog-modal-category"></span>
+                    </div>
+                </div>
+                <div class="blog-modal-body">
+                    <div id="blog-modal-content"></div>
+                </div>
+            </div>
+            <div class="blog-modal-overlay"></div>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
+
+    <!-- Overlay for modals -->
+    <div class="project-overlay"></div>
+    
+    <script>
+        // Navegación entre secciones
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            initializeProjectModals();
+            initializeForms();
+            initializeDownloads();
+            initializeBlog();
+        });
+
+        function initializeNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            // Set first section as active by default
+            if (sections.length > 0 && !document.querySelector('section.active')) {
+                sections[0].classList.add('active');
+                navLinks[0].classList.add('active');
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    navLinks.forEach(el => el.classList.remove('active'));
+                    sections.forEach(el => el.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const sectionId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(sectionId);
+                    
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        }
+
+        // Project modal system
+        function initializeProjectModals() {
+            // Create overlay element if it doesn't exist
+            let overlay = document.querySelector('.project-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'project-overlay';
+                document.body.appendChild(overlay);
+            }
+            
+            // Function to open project
+            function openProject(projectId) {
+                const projectDetail = document.getElementById(`project-${projectId}`);
+                if (projectDetail) {
+                    projectDetail.style.display = 'block';
+                    overlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            // Function to close project
+            function closeProject() {
+                const openProjects = document.querySelectorAll('.project-detail');
+                openProjects.forEach(project => {
+                    project.style.display = 'none';
+                });
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            
+            // Event listeners for opening projects
+            document.querySelectorAll('.clickable-project').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Prevent click if it's on a download button inside the project
+                    if (e.target.closest('a') || e.target.closest('button')) {
+                        return;
+                    }
+                    
+                    const projectId = this.getAttribute('data-project');
+                    if (projectId) {
+                        openProject(projectId);
+                    }
+                });
+            });
+            
+            // Event listeners for closing projects
+            document.querySelectorAll('.close-project').forEach(button => {
+                button.addEventListener('click', closeProject);
+            });
+            
+            // Close when clicking on overlay
+            overlay.addEventListener('click', closeProject);
+            
+            // Close with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeProject();
+                }
+            });
+        }
+
+        // Form handling
+        function initializeForms() {
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    const name = document.getElementById('name');
+                    const email = document.getElementById('email');
+                    const message = document.getElementById('message');
+                    
+                    let isValid = true;
+                    
+                    // Reset previous errors
+                    document.querySelectorAll('.error-message').forEach(el => el.remove());
+                    document.querySelectorAll('.form-group').forEach(el => el.classList.remove('error'));
+                    
+                    // Validate name
+                    if (!name.value.trim()) {
+                        showError(name, 'Please enter your name');
+                        isValid = false;
+                    }
+                    
+                    // Validate email
+                    if (!email.value.trim() || !isValidEmail(email.value)) {
+                        show
