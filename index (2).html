@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Nluce - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles matching your portfolio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #64ffda;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #e6f1ff;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: #8892b0;
+            border-bottom: 1px solid #233554;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: #a8b2d1;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #8892b0;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: #64ffda;
+            border: 1px solid #64ffda;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* Collapsible sections */
+        .collapsible {
+            background-color: #112240;
+            border: 1px solid #233554;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .collapsible-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible-header h3 {
+            margin: 0;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #0a192f;
+        }
+
+        .collapsible-content-inner {
+            padding: 20px;
+        }
+
+        .collapsible.active .collapsible-content {
+            max-height: 1000px;
+        }
+
+        /* Blog section */
+        .blog-container {
+            margin-top: 40px;
+        }
+
+        .blog-post {
+            background-color: #112240;
+            border: 1px solid #233554;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            padding: 20px;
+        }
+
+        .blog-post h3 {
+            color: #64ffda;
+            margin-top: 0;
+        }
+
+        .blog-meta {
+            color: #8892b0;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Admin panel */
+        .admin-panel {
+            background-color: #112240;
+            border: 1px solid #233554;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .admin-panel h3 {
+            margin-top: 0;
+            color: #64ffda;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #0a192f;
+            border: 1px solid #233554;
+            border-radius: 4px;
+            color: #ccd6f6;
+            font-size: 1rem;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #8892b0;
+            border-top: 1px solid #233554;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150" alt="Eduardo Nluce" class="profile-img">
+            <h1>Eduardo Nluce</h1>
+            <p>Software Developer &amp; Designer</p>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <h3>My Background</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-content-inner">
+                        <p>I'm a passionate software developer with experience in various technologies and frameworks. I enjoy creating solutions that make people's lives easier and more enjoyable.</p>
+                        <p>My journey in tech started when I was young, and I've been constantly learning and adapting to new technologies ever since.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <h3>Skills & Expertise</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-content-inner">
+                        <p>I specialize in front-end development with React and Vue.js, but I'm also proficient in back-end technologies like Node.js and Python.</p>
+                        <p>My design skills include UI/UX design principles and tools like Figma and Adobe XD.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <h3>E-commerce Platform</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-content-inner">
+                        <p>A full-featured e-commerce platform built with React, Node.js, and MongoDB. Includes user authentication, payment processing, and admin dashboard.</p>
+                        <p>The platform handles inventory management, order processing, and customer relationship management all in one place.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collapsible">
+                <div class="collapsible-header">
+                    <h3>Health & Fitness App</h3>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="collapsible-content">
+                    <div class="collapsible-content-inner">
+                        <p>A mobile application that helps users track their fitness goals, nutrition intake, and workout routines. Built with React Native and Firebase.</p>
+                        <p>The app includes features like personalized workout plans, progress tracking, and social sharing capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>My thoughts on technology, design, and development.</p>
+            
+            <div class="blog-container" id="blog-posts">
+                <!-- Blog posts will be loaded here -->
+            </div>
+
+            <div class="admin-panel" id="admin-panel">
+                <h3>Admin - Write New Blog Post</h3>
+                <input type="text" id="blog-title" placeholder="Post Title">
+                <textarea id="blog-content" placeholder="Write your post content here..."></textarea>
+                <button class="btn" id="publish-btn">Publish Post</button>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Eduardo Nluce. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle collapsible sections
+        document.querySelectorAll('.collapsible-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const collapsible = header.parentElement;
+                collapsible.classList.toggle('active');
+                
+                const icon = header.querySelector('.toggle-icon i');
+                if (collapsible.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Blog functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load existing blog posts
+            loadBlogPosts();
+            
+            // Set up publish button
+            document.getElementById('publish-btn').addEventListener('click', publishBlogPost);
+        });
+
+        function loadBlogPosts() {
+            const blogPostsContainer = document.getElementById('blog-posts');
+            const savedPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            
+            blogPostsContainer.innerHTML = '';
+            
+            if (savedPosts.length === 0) {
+                blogPostsContainer.innerHTML = '<p>No blog posts yet. Check back soon!</p>';
+                return;
+            }
+            
+            savedPosts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.className = 'blog-post';
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <div class="blog-meta">Posted on ${post.date}</div>
+                    <p>${post.content}</p>
+                `;
+                blogPostsContainer.appendChild(postElement);
+            });
+        }
+
+        function publishBlogPost() {
+            const titleInput = document.getElementById('blog-title');
+            const contentInput = document.getElementById('blog-content');
+            
+            const title = titleInput.value.trim();
+            const content = contentInput.value.trim();
+            
+            if (!title || !content) {
+                alert('Please add both title and content to your blog post.');
+                return;
+            }
+            
+            const newPost = {
+                title,
+                content,
+                date: new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                })
+            };
+            
+            const savedPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            savedPosts.unshift(newPost); // Add new post to beginning of array
+            localStorage.setItem('blogPosts', JSON.stringify(savedPosts));
+            
+            // Clear inputs
+            titleInput.value = '';
+            contentInput.value = '';
+            
+            // Reload blog posts
+            loadBlogPosts();
+            
+            alert('Blog post published successfully!');
+        }
+    </script>
+</body>
+</html>
