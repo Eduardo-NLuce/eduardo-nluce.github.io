@@ -1,0 +1,167 @@
+.admin-btn.secondary {
+    background: transparent;
+    color: #666;
+    border: 1px solid #eaeaea;
+}
+
+.admin-btn.secondary:hover {
+    background: #f5f5f5;
+}
+
+.login-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-modal.active {
+    display: flex;
+}
+
+.login-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+}
+
+.file-upload {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.file-upload input {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-upload label {
+    display: block;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px dashed #eaeaea;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+}
+
+.upload-preview {
+    margin-top: 10px;
+    max-width: 100%;
+    max-height: 200px;
+    display: none;
+}
+
+.content-list {
+    margin-top: 20px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 20px;
+}
+
+.content-item {
+    padding: 10px;
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border-left: 3px solid #eaeaea;
+}
+
+.content-item.published {
+    border-left-color: #222;
+}
+
+.content-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.admin-notice {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 3px solid #222;
+    margin-bottom: 20px;
+}
+
+.admin-notice p {
+    margin: 0;
+    color: #666;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-detail {
+        width: 95%;
+        height: auto;
+    }
+    
+    .technical-specs {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .admin-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .admin-tabs {
+        overflow-x: auto;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+    }
+    
+    .content-actions {
+        flex-direction: column;
+    }
+}
