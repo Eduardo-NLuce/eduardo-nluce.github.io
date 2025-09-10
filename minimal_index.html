@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eduardo Luce MArch</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="texts">Texts</a></li>
+                <li><a href="#" class="nav-link" data-section="downloads">Downloads</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="portfolio" class="active">
+            <h1>Selected Projects</h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="axochiapan">
+                        <img src="https://via.placeholder.com/600x400/f5f5f5/333333?text=Axochiapan+Dome" alt="Axochiapan Dome Reconstruction">
+                        <div class="overlay">
+                            <h2>Dome Reconstruction - Axochiapan Church</h2>
+                            <p>Axochiapan, Morelos · 2019-2020</p>
+                            <div class="click-hint">Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="bhs-calculator">
+                        <img src="https://via.placeholder.com/600x400/f5f5f5/333333?text=BHS+Calculator" alt="Baggage Carousel Calculator Grasshopper Plugin">
+                        <div class="overlay">
+                            <h2>Baggage Carousel Calculator</h2>
+                            <p>Grasshopper Plugin · 2025</p>
+                            <div class="click-hint">Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic projects will be added here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Axochiapan Project Modal -->
+        <div id="project-axochiapan" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Geometric Calculation & Parametrization for Dome Reconstruction</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Collaborators: Arch. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
+                <p class="project-meta">Context: Post-earthquake reconstruction · Heritage conservation</p>
+                
+                <div class="project-description">
+                    <p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p>
+                    
+                    <h4>Technical Approach</h4>
+                    <ul>
+                        <li>Digital Documentation: Laser scanning and photogrammetry of damaged structure</li>
+                        <li>Parametric Modeling: Grasshopper definition for dome geometry reconstruction</li>
+                        <li>Structural Analysis: Integration with finite element analysis plugins</li>
+                        <li>Material Optimization: Parametric optimization of brick patterns and placement</li>
+                    </ul>
+                    
+                    <h4>News References</h4>
+                    <div class="project-references">
+                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
+                            Diario de Morelos - Temple Reconstruction in Axochiapan (2019)
+                        </a>
+                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
+                            INAH - Reconstruction of Heritage Damaged by Earthquake
+                        </a>
+                        <a href="https://www.uaem.mx/noticias/archivo/2019/noviembre/191125a.html" target="_blank" class="news-link">
+                            UAEM - Research on Heritage Reconstruction
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BHS Calculator Modal -->
+        <div id="project-bhs-calculator" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Baggage Carousel Calculator</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Developer: Eduardo Luce · 2025</p>
+                <p class="project-meta">Category: Grasshopper Plugin · Parametric Airport Design</p>
+                
+                <div class="project-description">
+                    <h4>Description</h4>
+                    <p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data. Optimizes spatial distribution in reclaim halls based on operational aircraft mix.</p>
+                    
+                    <div class="project-download">
+                        <a href="#" class="download-btn-large" download>
+                            Download Plugin (ZIP, 2.3 MB)
+                        </a>
+                        <p class="download-note">Includes .ghuser file + PDF documentation</p>
+                    </div>
+
+                    <h4>Technical Requirements</h4>
+                    <div class="requirements">
+                        <div class="req-item">
+                            <strong>Software:</strong> Rhinoceros 7+ and Grasshopper
+                        </div>
+                        <div class="req-item">
+                            <strong>Components:</strong> Standard Grasshopper (no additional plugins required)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            <div class="texts-list">
+                <!-- Texts will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="downloads">
+            <h1>Resources & Documents</h1>
+            <div class="downloads-list">
+                <!-- Downloads will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div class="project-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
