@@ -234,4 +234,463 @@ function showProjectModal(project) {
   projectDetail.addEventListener('click', function(e) {
     e.stopPropagation();
   });
+// Admin functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Your credentials
+    const ADMIN_CREDENTIALS = {
+        username: 'eluce',
+        password: 'SabrinaCarpenter'
+    };
+
+    // Check if admin access is requested via URL
+    if (window.location.href.includes('adminluce')) {
+        showAdminPanel();
+    }
+    
+    // Admin functionality elements
+    const adminPanel = document.getElementById('adminPanel');
+    const loginModal = document.getElementById('loginModal');
+    const adminTabs = document.querySelectorAll('.admin-tab');
+    const adminContents = document.querySelectorAll('.admin-content');
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout');
+    const closeLoginBtn = document.getElementById('close-login');
+    const closeAdminBtn = document.querySelector('.close-admin');
+    const projectForm = document.getElementById('project-form');
+    const textForm = document.getElementById('text-form');
+    const downloadForm = document.getElementById('download-form');
+    const publishProjectBtn = document.getElementById('publish-project');
+    const publishTextBtn = document.getElementById('publish-text');
+    const publishDownloadBtn = document.getElementById('publish-download');
+    
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+    
+    // Initialize admin if needed
+    if (window.location.href.includes('adminluce')) {
+        if (isLoggedIn) {
+            adminPanel.classList.add('active');
+            loadAdminContent();
+        } else {
+            loginModal.classList.add('active');
+        }
+    }
+    
+    // Event listeners for admin
+    adminTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Update active tab
+            adminTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show corresponding content
+            adminContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === `${tabId}-admin`) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    });
+    
+    // Login functionality
+    loginBtn.addEventListener('click', function() {
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        
+        // Authentication with credentials
+        if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+            localStorage.setItem('adminLoggedIn', 'true');
+            loginModal.classList.remove('active');
+            adminPanel.classList.add('active');
+            loadAdminContent();
+        } else {
+            alert('Invalid credentials. Please try again.');
+        }
+    });
+    
+    // Close login modal
+    closeLoginBtn.addEventListener('click', function() {
+        loginModal.classList.remove('active');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    });
+    
+    // Close admin panel
+    closeAdminBtn.addEventListener('click', function() {
+        adminPanel.classList.remove('active');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    });
+    
+    // Logout functionality
+    logoutBtn.addEventListener('click', function() {
+        localStorage.setItem('adminLoggedIn', 'false');
+        adminPanel.classList.remove('active');
+        window.history.replaceState({}, document.title, window.location.pathname);
+    });
+    
+    // Project form submission
+    if (projectForm) {
+        projectForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveProject(false);
+        });
+    }
+    
+    // Text form submission
+    if (textForm) {
+        textForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveText(false);
+        });
+    }
+    
+    // Download form submission
+    if (downloadForm) {
+        downloadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveDownload(false);
+        });
+    }
+    
+    // Publish buttons
+    if (publishProjectBtn) {
+        publishProjectBtn.addEventListener('click', function() {
+            saveProject(true);
+        });
+    }
+    
+    if (publishTextBtn) {
+        publishTextBtn.addEventListener('click', function() {
+            saveText(true);
+        });
+    }
+    
+    if (publishDownloadBtn) {
+        publishDownloadBtn.addEventListener('click', function() {
+            saveDownload(true);
+        });
+    }
+    
+    // Function to show admin panel
+    function showAdminPanel() {
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Function to save project
+    function saveProject(publish) {
+        const title = document.getElementById('project-title').value;
+        const description = document.getElementById('project-description').value;
+        const meta = document.getElementById('project-meta').value;
+        const imageUrl = document.getElementById('project-image-url').value;
+        const details = document.getElementById('project-details').value;
+        
+        if (!title || !description) {
+            alert('Please fill in all required fields (title and description).');
+            return;
+        }
+        
+        // Get existing projects or initialize empty array
+        const projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+        
+        // Create project object
+        const project = {
+            id: Date.now(),
+            title,
+            description,
+            meta,
+            imageUrl,
+            details,
+            published: publish,
+            createdAt: new Date().toISOString()
+        };
+        
+        projects.push(project);
+        localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+        
+        alert(`Project ${publish ? 'published' : 'saved'} successfully!`);
+        projectForm.reset();
+        loadAdminContent();
+        updatePortfolioDisplay();
+    }
+    
+    // Function to save text
+    function saveText(publish) {
+        const title = document.getElementById('text-title').value;
+        const content = document.getElementById('text-content').value;
+        const meta = document.getElementById('text-meta').value;
+        
+        if (!title || !content) {
+            alert('Please fill in all required fields (title and content).');
+            return;
+        }
+        
+        // Get existing texts or initialize empty array
+        const texts = JSON.parse(localStorage.getItem('portfolioTexts')) || [];
+        
+        // Create text object
+        const text = {
+            id: Date.now(),
+            title,
+            content,
+            meta,
+            published: publish,
+            createdAt: new Date().toISOString()
+        };
+        
+        texts.push(text);
+        localStorage.setItem('portfolioTexts', JSON.stringify(texts));
+        
+        alert(`Text ${publish ? 'published' : 'saved'} successfully!`);
+        textForm.reset();
+        loadAdminContent();
+        updateTextsDisplay();
+    }
+    
+    // Function to save download
+    function saveDownload(publish) {
+        const title = document.getElementById('download-title').value;
+        const description = document.getElementById('download-description').value;
+        const file = document.getElementById('download-file').value;
+        
+        if (!title || !description) {
+            alert('Please fill in all required fields (title and description).');
+            return;
+        }
+        
+        // Get existing downloads or initialize empty array
+        const downloads = JSON.parse(localStorage.getItem('portfolioDownloads')) || [];
+        
+        // Create download object
+        const download = {
+            id: Date.now(),
+            title,
+            description,
+            file,
+            published: publish,
+            createdAt: new Date().toISOString()
+        };
+        
+        downloads.push(download);
+        localStorage.setItem('portfolioDownloads', JSON.stringify(downloads));
+        
+        alert(`Download ${publish ? 'published' : 'saved'} successfully!`);
+        downloadForm.reset();
+        loadAdminContent();
+        updateDownloadsDisplay();
+    }
+    
+    // Load content for admin listing
+    function loadAdminContent() {
+        loadProjectsAdmin();
+        loadTextsAdmin();
+        loadDownloadsAdmin();
+    }
+    
+    function loadProjectsAdmin() {
+        const projectsList = document.getElementById('projects-list');
+        const projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+        
+        if (!projectsList) return;
+        
+        projectsList.innerHTML = '';
+        
+        if (projects.length === 0) {
+            projectsList.innerHTML = '<p>No projects yet.</p>';
+            return;
+        }
+        
+        projects.forEach(project => {
+            const projectEl = document.createElement('div');
+            projectEl.className = `content-item ${project.published ? 'published' : 'draft'}`;
+            projectEl.innerHTML = `
+                <h4>${project.title} ${project.published ? '(Published)' : '(Draft)'}</h4>
+                <p>${project.meta || 'No metadata'}</p>
+                <div class="content-actions">
+                    <button class="admin-btn" onclick="editProject(${project.id})">Edit</button>
+                    <button class="admin-btn secondary" onclick="togglePublishProject(${project.id}, ${!project.published})">
+                        ${project.published ? 'Unpublish' : 'Publish'}
+                    </button>
+                    <button class="admin-btn secondary" onclick="deleteProject(${project.id})">Delete</button>
+                </div>
+            `;
+            projectsList.appendChild(projectEl);
+        });
+    }
+    
+    function loadTextsAdmin() {
+        const textsList = document.getElementById('texts-list');
+        const texts = JSON.parse(localStorage.getItem('portfolioTexts')) || [];
+        
+        if (!textsList) return;
+        
+        textsList.innerHTML = '';
+        
+        if (texts.length === 0) {
+            textsList.innerHTML = '<p>No texts yet.</p>';
+            return;
+        }
+        
+        texts.forEach(text => {
+            const textEl = document.createElement('div');
+            textEl.className = `content-item ${text.published ? 'published' : 'draft'}`;
+            textEl.innerHTML = `
+                <h4>${text.title} ${text.published ? '(Published)' : '(Draft)'}</h4>
+                <p>${text.meta || 'No metadata'}</p>
+                <div class="content-actions">
+                    <button class="admin-btn" onclick="editText(${text.id})">Edit</button>
+                    <button class="admin-btn secondary" onclick="togglePublishText(${text.id}, ${!text.published})">
+                        ${text.published ? 'Unpublish' : 'Publish'}
+                    </button>
+                    <button class="admin-btn secondary" onclick="deleteText(${text.id})">Delete</button>
+                </div>
+            `;
+            textsList.appendChild(textEl);
+        });
+    }
+    
+    function loadDownloadsAdmin() {
+        const downloadsList = document.getElementById('downloads-list');
+        const downloads = JSON.parse(localStorage.getItem('portfolioDownloads')) || [];
+        
+        if (!downloadsList) return;
+        
+        downloadsList.innerHTML = '';
+        
+        if (downloads.length === 0) {
+            downloadsList.innerHTML = '<p>No downloads yet.</p>';
+            return;
+        }
+        
+        downloads.forEach(download => {
+            const downloadEl = document.createElement('div');
+            downloadEl.className = `content-item ${download.published ? 'published' : 'draft'}`;
+            downloadEl.innerHTML = `
+                <h4>${download.title} ${download.published ? '(Published)' : '(Draft)'}</h4>
+                <p>${download.description || 'No description'}</p>
+                <div class="content-actions">
+                    <button class="admin-btn" onclick="editDownload(${download.id})">Edit</button>
+                    <button class="admin-btn secondary" onclick="togglePublishDownload(${download.id}, ${!download.published})">
+                        ${download.published ? 'Unpublish' : 'Publish'}
+                    </button>
+                    <button class="admin-btn secondary" onclick="deleteDownload(${download.id})">Delete</button>
+                </div>
+            `;
+            downloadsList.appendChild(downloadEl);
+        });
+    }
+    
+    // Make functions available globally
+    window.editProject = function(id) {
+        const projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+        const project = projects.find(p => p.id === id);
+        
+        if (project) {
+            document.getElementById('project-title').value = project.title;
+            document.getElementById('project-description').value = project.description;
+            document.getElementById('project-meta').value = project.meta || '';
+            document.getElementById('project-image-url').value = project.imageUrl || '';
+            document.getElementById('project-details').value = project.details || '';
+            
+            // Switch to projects tab
+            document.querySelector('[data-tab="projects"]').click();
+        }
+    };
+    
+    window.togglePublishProject = function(id, publish) {
+        const projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+        const projectIndex = projects.findIndex(p => p.id === id);
+        
+        if (projectIndex !== -1) {
+            projects[projectIndex].published = publish;
+            localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+            loadProjectsAdmin();
+            updatePortfolioDisplay();
+        }
+    };
+    
+    window.deleteProject = function(id) {
+        if (confirm('Are you sure you want to delete this project?')) {
+            let projects = JSON.parse(localStorage.getItem('portfolioProjects')) || [];
+            projects = projects.filter(p => p.id !== id);
+            localStorage.setItem('portfolioProjects', JSON.stringify(projects));
+            loadProjectsAdmin();
+            updatePortfolioDisplay();
+        }
+    };
+    
+    window.editText = function(id) {
+        const texts = JSON.parse(localStorage.getItem('portfolioTexts')) || [];
+        const text = texts.find(t => t.id === id);
+        
+        if (text) {
+            document.getElementById('text-title').value = text.title;
+            document.getElementById('text-content').value = text.content;
+            document.getElementById('text-meta').value = text.meta || '';
+            
+            // Switch to texts tab
+            document.querySelector('[data-tab="texts"]').click();
+        }
+    };
+    
+    window.togglePublishText = function(id, publish) {
+        const texts = JSON.parse(localStorage.getItem('portfolioTexts')) || [];
+        const textIndex = texts.findIndex(t => t.id === id);
+        
+        if (textIndex !== -1) {
+            texts[textIndex].published = publish;
+            localStorage.setItem('portfolioTexts', JSON.stringify(texts));
+            loadTextsAdmin();
+            updateTextsDisplay();
+        }
+    };
+    
+    window.deleteText = function(id) {
+        if (confirm('Are you sure you want to delete this text?')) {
+            let texts = JSON.parse(localStorage.getItem('portfolioTexts')) || [];
+            texts = texts.filter(t => t.id !== id);
+            localStorage.setItem('portfolioTexts', JSON.stringify(texts));
+            loadTextsAdmin();
+            updateTextsDisplay();
+        }
+    };
+    
+    window.editDownload = function(id) {
+        const downloads = JSON.parse(localStorage.getItem('portfolioDownloads')) || [];
+        const download = downloads.find(d => d.id === id);
+        
+        if (download) {
+            document.getElementById('download-title').value = download.title;
+            document.getElementById('download-description').value = download.description;
+            document.getElementById('download-file').value = download.file || '';
+            
+            // Switch to downloads tab
+            document.querySelector('[data-tab="downloads"]').click();
+        }
+    };
+    
+    window.togglePublishDownload = function(id, publish) {
+        const downloads = JSON.parse(localStorage.getItem('portfolioDownloads')) || [];
+        const downloadIndex = downloads.findIndex(d => d.id === id);
+        
+        if (downloadIndex !== -1) {
+            downloads[downloadIndex].published = publish;
+            localStorage.setItem('portfolioDownloads', JSON.stringify(downloads));
+            loadDownloadsAdmin();
+            updateDownloadsDisplay();
+        }
+    };
+    
+    window.deleteDownload = function(id) {
+        if (confirm('Are you sure you want to delete this download?')) {
+            let downloads = JSON.parse(localStorage.getItem('portfolioDownloads')) || [];
+            downloads = downloads.filter(d => d.id !== id);
+            localStorage.setItem('portfolioDownloads', JSON.stringify(downloads));
+            loadDownloadsAdmin();
+            updateDownloadsDisplay();
+        }
+    };
+});
+  
 }
