@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #000;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        section {
+            margin-bottom: 50px;
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .overlay h2 {
+            font-size: 1.2rem;
+            margin: 0 0 10px;
+            border: none;
+            padding: 0;
+            color: #000;
+        }
+
+        .overlay p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .click-hint {
+            margin-top: 10px;
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        /* Links - only blue elements */
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Project Detail Modals */
+        .project-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .project-detail {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 4px;
+            z-index: 101;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid #e0e0e0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f5f5f5;
+        }
+
+        .project-header h3 {
+            margin: 0;
+            color: #000;
+        }
+
+        .close-project {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .project-description ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project-description li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .project-references {
+            margin: 20px 0;
+        }
+
+        .news-link {
+            display: block;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-left: 3px solid #1a0dab;
+            margin-bottom: 10px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .news-link:hover {
+            background: #eaeaea;
+            text-decoration: none;
+        }
+
+        .project-download {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .download-btn-large {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .download-btn-large:hover {
+            background: #333;
+            text-decoration: none;
+        }
+
+        .download-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .requirements {
+            margin: 20px 0;
+        }
+
+        .req-item {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Texts and Downloads sections */
+        .texts-list, .downloads-list {
+            list-style: none;
+        }
+
+        .text-item, .download-item {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 3px solid #e0e0e0;
+            transition: border-left-color 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+
+        .text-item:hover, .download-item:hover {
+            border-left-color: #1a0dab;
+        }
+
+        .text-item h3, .download-item h3 {
+            color: #000;
+            margin-top: 0;
+        }
+
+        .text-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .text-item.active .text-content {
+            max-height: 500px;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download-btn {
+            padding: 8px 16px;
+            background: transparent;
+            color: #1a0dab;
+            border: 1px solid #1a0dab;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background: #1a0dab;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Contact section */
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: #fafafa;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+            color: #333;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .admin-tab.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .admin-form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .admin-form-group input,
+        .admin-form-group textarea,
+        .admin-form-group select {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .admin-form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .admin-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .admin-btn:hover {
+            background: #333;
+        }
+
+        .admin-btn.secondary {
+            background: transparent;
+            color: #666;
+            border: 1px solid #e0e0e0;
+        }
+
+        .admin-btn.secondary:hover {
+            background: #f0f0f0;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .content-list {
+            margin-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        .content-item {
+            padding: 10px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #e0e0e0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .content-item.published {
+            border-left-color: #1a0dab;
+        }
+
+        .content-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .admin-notice {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .admin-notice p {
+            margin: 0;
+            color: #666;
+        }
+
+        .close-admin {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .status-published {
+            background: #f0f0f0;
+            color: #000;
+            border: 1px solid #e0e0e0;
+        }
+
+        .status-draft {
+            background: #f5f5f5;
+            color: #666;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-detail {
+                width: 95%;
+                height: auto;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .admin-tabs {
+                overflow-x: auto;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+            
+            .content-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Eduardo Luce MArch</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="texts">Texts</a></li>
+                <li><a href="#" class="nav-link" data-section="downloads">Downloads</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                <li><a href="#" id="admin-login-link">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="portfolio" class="active">
+            <h1>Selected Projects</h1>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="axochiapan">
+                        <img src="https://via.placeholder.com/600x400/f5f5f5/333333?text=Axochiapan+Dome" alt="Axochiapan Dome Reconstruction">
+                        <div class="overlay">
+                            <h2>Dome Reconstruction - Axochiapan Church</h2>
+                            <p>Axochiapan, Morelos · 2019-2020</p>
+                            <div class="click-hint">Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="project-image clickable-project" data-project="bhs-calculator">
+                        <img src="https://via.placeholder.com/600x400/f5f5f5/333333?text=BHS+Calculator" alt="Baggage Carousel Calculator Grasshopper Plugin">
+                        <div class="overlay">
+                            <h2>Baggage Carousel Calculator</h2>
+                            <p>Grasshopper Plugin · 2025</p>
+                            <div class="click-hint">Click for details</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic projects will be added here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Axochiapan Project Modal -->
+        <div id="project-axochiapan" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Geometric Calculation & Parametrization for Dome Reconstruction</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Collaborators: Arch. Marcos Ontiveros, PhD Juan Gerardo Oliva Salinas</p>
+                <p class="project-meta">Context: Post-earthquake reconstruction · Heritage conservation</p>
+                
+                <div class="project-description">
+                    <p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p>
+                    
+                    <h4>Technical Approach</h4>
+                    <ul>
+                        <li>Digital Documentation: Laser scanning and photogrammetry of damaged structure</li>
+                        <li>Parametric Modeling: Grasshopper definition for dome geometry reconstruction</li>
+                        <li>Structural Analysis: Integration with finite element analysis plugins</li>
+                        <li>Material Optimization: Parametic optimization of brick patterns and placement</li>
+                    </ul>
+                    
+                    <h4>News References</h4>
+                    <div class="project-references">
+                        <a href="https://www.diariodemorelos.com/noticias/reconstruyen-templo-de-axochiapan-danado-por-sismo-de-2017" target="_blank" class="news-link">
+                            Diario de Morelos - Temple Reconstruction in Axochiapan (2019)
+                        </a>
+                        <a href="https://www.inah.gob.mx/boletines/7804-inah-morelos-suma-esfuerzos-para-reconstruir-el-patrimonio-danado-por-el-sismo" target="_blank" class="news-link">
+                            INAH - Reconstruction of Heritage Damaged by Earthquake
+                        </a>
+                        <a href="https://www.uaem.mx/noticias/archivo/2019/noviembre/191125a.html" target="_blank" class="news-link">
+                            UAEM - Research on Heritage Reconstruction
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BHS Calculator Modal -->
+        <div id="project-bhs-calculator" class="project-detail" style="display: none;">
+            <div class="project-header">
+                <h3>Baggage Carousel Calculator</h3>
+                <button class="close-project">×</button>
+            </div>
+            
+            <div class="project-content">
+                <p class="project-meta">Developer: Eduardo Luce · 2025</p>
+                <p class="project-meta">Category: Grasshopper Plugin · Parametric Airport Design</p>
+                
+                <div class="project-description">
+                    <h4>Description</h4>
+                    <p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data. Optimizes spatial distribution in reclaim halls based on operational aircraft mix.</p>
+                    
+                    <div class="project-download">
+                        <a href="#" class="download-btn-large" download>
+                            Download Plugin (ZIP, 2.3 MB)
+                        </a>
+                        <p class="download-note">Includes .ghuser file + PDF documentation</p>
+                    </div>
+
+                    <h4>Technical Requirements</h4>
+                    <div class="requirements">
+                        <div class="req-item">
+                            <strong>Software:</strong> Rhinoceros 7+ and Grasshopper
+                        </div>
+                        <div class="req-item">
+                            <strong>Components:</strong> Standard Grasshopper (no additional plugins required)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            <div class="texts-list">
+                <!-- Texts will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="downloads">
+            <h1>Resources & Documents</h1>
+            <div class="downloads-list">
+                <!-- Downloads will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div class="project-overlay"></div>
+    
+    <!-- Admin Panel (Hidden by default, accessible via URL) -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2>Content Management</h2>
+            <p>Manage your portfolio content</p>
+            <button class="close-admin">×</button>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="projects">Projects</button>
+            <button class="admin-tab" data-tab="texts">Texts</button>
+            <button class="admin-tab" data-tab="downloads">Downloads</button>
+            <button class="admin-tab" data-tab="settings">Settings</button>
+        </div>
+        
+        <!-- Projects Admin -->
+        <div class="admin-content active" id="projects-admin">
+            <h3>Add New Project</h3>
+            <form id="project-form">
+                <div class="admin-form-group">
+                    <label for="project-title">Project Title *</label>
+                    <input type="text" id="project-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-description">Description *</label>
+                    <textarea id="project-description" required></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-meta">Metadata (e.g., Location, Year)</label>
+                    <input type="text" id="project-meta">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-image-url">Image URL</label>
+                    <input type="text" id="project-image-url" placeholder="e.g., images/my-project.jpg">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-details">Detailed Content</label>
+                    <textarea id="project-details" placeholder="You can use HTML tags for formatting"></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Project</button>
+                    <button type="button" class="admin-btn secondary" id="publish-project">Save & Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Projects</h3>
+                <div id="projects-list">
+                    <!-- Projects will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Texts Admin -->
+        <div class="admin-content" id="texts-admin">
+            <h3>Add New Text</h3>
+            <form id="text-form">
+                <div class="admin-form-group">
+                    <label for="text-title">Title *</label>
+                    <input type="text" id="text-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="text-content">Content *</label>
+                    <textarea id="text-content" required></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="text-meta">Metadata (e.g., Publication, Date)</label>
+                    <input type="text" id="text-meta">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Text</button>
+                    <button type="button" class="admin-btn secondary" id="publish-text">Save & Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Texts</h3>
+                <div id="texts-list">
+                    <!-- Texts will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Downloads Admin -->
+        <div class="admin-content" id="downloads-admin">
+            <h3>Add New Download</h3>
+            <form id="download-form">
+                <div class="admin-form-group">
+                    <label for="download-title">Title *</label>
+                    <input type="text" id="download-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-description">Description</label>
+                    <textarea id="download-description"></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-file-url">File URL *</label>
+                    <input type="text" id="download-file-url" required placeholder="e.g., downloads/file.zip">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-meta">Metadata (e.g., File Size, Format)</label>
+                    <input type="text" id="download-meta">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Download</button>
+                    <button type="button" class="admin-btn secondary" id="publish-download">Save & Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Downloads</h3>
+                <div id="downloads-list">
+                    <!-- Downloads will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Admin -->
+        <div class="admin-content" id="settings-admin">
+            <h3>Admin Settings</h3>
+            <div class="admin-notice">
+                <p>These settings are stored locally in your browser. For persistent changes across devices, consider implementing a backend solution.</p>
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="admin-username">Admin Username</label>
+                <input type="text" id="admin-username" value="eluce">
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="admin-password">Admin Password</label>
+                <input type="password" id="admin-password" value="SabrinaCarpenter">
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="admin-btn" id="save-settings">Save Settings</button>
+                <button type="button" class="admin-btn secondary" id="export-data">Export Data</button>
+                <button type="button" class="admin-btn secondary" id="import-data">Import Data</button>
+                <button type="button" class="admin-btn secondary" id="reset-data">Reset All Data</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <div class="admin-form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div class="admin-form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="admin-btn" id="login-submit">Login</button>
+                <button type="button" class="admin-btn secondary" id="login-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Main navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetSection = this.getAttribute('data-section');
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Project modals
+            const projectOverlay = document.querySelector('.project-overlay');
+            const projectModals = document.querySelectorAll('.project-detail');
+            const closeProjectButtons = document.querySelectorAll('.close-project');
+            const clickableProjects = document.querySelectorAll('.clickable-project');
+            
+            function openProjectModal(projectId) {
+                const modal = document.getElementById(`project-${projectId}`);
+                if (modal) {
+                    modal.style.display = 'block';
+                    projectOverlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function closeProjectModals() {
+                projectModals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                projectOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            clickableProjects.forEach(project => {
+                project.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    openProjectModal(projectId);
+                });
+            });
+            
+            closeProjectButtons.forEach(button => {
+                button.addEventListener('click', closeProjectModals);
+            });
+            
+            projectOverlay.addEventListener('click', closeProjectModals);
+            
+            // Text items expansion
+            const textItems = document.querySelectorAll('.text-item');
+            textItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+            
+            // Admin panel functionality
+            const adminPanel = document.getElementById('adminPanel');
+            const loginModal = document.getElementById('loginModal');
+            const adminTabs = document.querySelectorAll('.admin-tab');
+            const adminContents = document.querySelectorAll('.admin-content');
+            const closeAdminBtn = document.querySelector('.close-admin');
+            const loginSubmitBtn = document.getElementById('login-submit');
+            const loginCancelBtn = document.getElementById('login-cancel');
+            const adminLoginLink = document.getElementById('admin-login-link');
+            
+            // Admin login link
+            adminLoginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.classList.add('active');
+            });
+            
+            // Check if admin access is requested
+            if (window.location.hash === '#admin') {
+                loginModal.classList.add('active');
+            }
+            
+            // Admin tab switching
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    adminContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-admin`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Login functionality
+            loginSubmitBtn.addEventListener('click', function() {
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Check credentials (username: eluce, password: SabrinaCarpenter)
+                if (username === 'eluce' && password === 'SabrinaCarpenter') {
+                    loginModal.classList.remove('active');
+                    adminPanel.style.display = 'block';
+                    setTimeout(() => {
+                        adminPanel.classList.add('active');
+                    }, 10);
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            });
+            
+            loginCancelBtn.addEventListener('click', function() {
+                loginModal.classList.remove('active');
+                window.location.hash = '';
+            });
+            
+            closeAdminBtn.addEventListener('click', function() {
+                adminPanel.classList.remove('active');
+                setTimeout(() => {
+                    adminPanel.style.display = 'none';
+                }, 300);
+            });
+            
+            // Publish buttons functionality
+            const publishProjectBtn = document.getElementById('publish-project');
+            const publishTextBtn = document.getElementById('publish-text');
+            const publishDownloadBtn = document.getElementById('publish-download');
+            
+            if (publishProjectBtn) {
+                publishProjectBtn.addEventListener('click', function() {
+                    // First save the project
+                    const projectForm = document.getElementById('project-form');
+                    const formData = new FormData(projectForm);
+                    
+                    // Check if required fields are filled
+                    if (!document.getElementById('project-title').value || 
+                        !document.getElementById('project-description').value) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Then publish it
+                    alert('Project saved and published successfully!');
+                    projectForm.reset();
+                });
+            }
+            
+            if (publishTextBtn) {
+                publishTextBtn.addEventListener('click', function() {
+                    // First save the text
+                    const textForm = document.getElementById('text-form');
+                    const formData = new FormData(textForm);
+                    
+                    // Check if required fields are filled
+                    if (!document.getElementById('text-title').value || 
+                        !document.getElementById('text-content').value) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Then publish it
+                    alert('Text saved and published successfully!');
+                    textForm.reset();
+                });
+            }
+            
+            if (publishDownloadBtn) {
+                publishDownloadBtn.addEventListener('click', function() {
+                    // First save the download
+                    const downloadForm = document.getElementById('download-form');
+                    const formData = new FormData(downloadForm);
+                    
+                    // Check if required fields are filled
+                    if (!document.getElementById('download-title').value || 
+                        !document.getElementById('download-file-url').value) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Then publish it
+                    alert('Download saved and published successfully!');
+                    downloadForm.reset();
+                });
+            }
+            
+            // Form submissions
+            const forms = document.querySelectorAll('#project-form, #text-form, #download-form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Form saved successfully!');
+                    this.reset();
+                });
+            });
+            
+            // Settings functionality
+            document.getElementById('save-settings').addEventListener('click', function() {
+                alert('Settings saved locally.');
+            });
+            
+            document.getElementById('export-data').addEventListener('click', function() {
+                alert('Data export functionality would be implemented here.');
+            });
+            
+            document.getElementById('import-data').addEventListener('click', function() {
+                alert('Data import functionality would be implemented here.');
+            });
+            
+            document.getElementById('reset-data').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
+                    alert('All data would be reset here.');
+                }
+            });
+            
+            // Initialize with some sample content
+            initializeSampleContent();
+        });
+        
+        function initializeSampleContent() {
+            // Sample texts
+            const textsContainer = document.querySelector('.texts-list');
+            textsContainer.innerHTML = `
+                <div class="text-item">
+                    <h3>Parametric Design in Heritage Conservation</h3>
+                    <p class="meta">Journal of Architectural Conservation · 2021</p>
+                    <div class="text-content">
+                        <p>This paper explores the application of parametric design methodologies in the conservation of heritage structures, with a focus on post-earthquake reconstruction projects in Mexico.</p>
+                        <p>The research demonstrates how digital tools can enhance accuracy while respecting traditional construction techniques.</p>
+                    </div>
+                </div>
+                <div class="text-item">
+                    <h3>Algorithmic Approaches to Airport Design</h3>
+                    <p class="meta">AeroDesign Symposium · 2023</p>
+                    <div class="text-content">
+                        <p>Examining the role of computational design in optimizing passenger flow and operational efficiency in airport terminals.</p>
+                        <p>The paper presents case studies of parametric tools developed for baggage handling systems and terminal layout optimization.</p>
+                    </div>
+                </div>
+            `;
+            
+            // Sample downloads
+            const downloadsContainer = document.querySelector('.downloads-list');
+            downloadsContainer.innerHTML = `
+                <div class="download-item">
+                    <div>
+                        <h3>Parametric Design Toolkit</h3>
+                        <p class="meta">ZIP, 4.2 MB · Grasshopper scripts</p>
+                    </div>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="download-item">
+                    <div>
+                        <h3>Research Portfolio PDF</h3>
+                        <p class="meta">PDF, 8.5 MB · Complete portfolio</p>
+                    </div>
+                    <button class="download-btn">Download</button>
+                </div>
+            `;
+            
+            // Add click events to new text items
+            const textItems = document.querySelectorAll('.text-item');
+            textItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
