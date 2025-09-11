@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #34495e;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #3498db;
+            background: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+        }
+
+        /* Portfolio Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .portfolio-content p {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .admin-tab.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .admin-form-group {
+            margin-bottom: 20px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .admin-form-group input,
+        .admin-form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .admin-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .admin-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: #2980b9;
+        }
+
+        .admin-btn.secondary {
+            background: #95a5a6;
+        }
+
+        .admin-btn.secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .content-list {
+            margin-top: 30px;
+        }
+
+        .content-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 3px solid #3498db;
+        }
+
+        .content-item h4 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .content-item p {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .content-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Login Modal */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Eduardo <span>Luce</span> MArch</div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Portfolio</a></li>
+                        <li><a href="#">Texts</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" id="admin-login-link">Admin</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Architectural Innovation & Design Excellence</h1>
+            <p>Specializing in parametric design, heritage conservation, and computational approaches to architectural challenges.</p>
+            <a href="#" class="btn">View Portfolio</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Selected Projects</h2>
+                <p>Explore my latest architectural designs and innovative solutions</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Axochiapan Church Dome</h3>
+                        <p>Reconstruction of heritage church dome using parametric design and advanced geometric calculation.</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fas fa-plane-departure"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Baggage Carousel Calculator</h3>
+                        <p>Grasshopper plugin for optimizing airport baggage handling systems according to IATA standards.</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Parametric Tower Design</h3>
+                        <p>High-rise building design using computational methods to optimize structural performance.</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2>Content Management</h2>
+            <button id="close-admin"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="projects">Projects</button>
+            <button class="admin-tab" data-tab="texts">Texts</button>
+            <button class="admin-tab" data-tab="downloads">Downloads</button>
+        </div>
+        
+        <!-- Projects Admin -->
+        <div class="admin-content active" id="projects-admin">
+            <h3>Add New Project</h3>
+            <form id="project-form">
+                <div class="admin-form-group">
+                    <label for="project-title">Project Title</label>
+                    <input type="text" id="project-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" required></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-meta">Metadata (Location, Year)</label>
+                    <input type="text" id="project-meta">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Project</button>
+                    <button type="button" class="admin-btn secondary" id="publish-project">Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Projects</h3>
+                <div class="content-item">
+                    <h4>Axochiapan Church Dome <span class="status">(Published)</span></h4>
+                    <p>Reconstruction of heritage church dome using parametric design</p>
+                    <div class="content-actions">
+                        <button class="admin-btn">Edit</button>
+                        <button class="admin-btn secondary">Unpublish</button>
+                    </div>
+                </div>
+                <div class="content-item">
+                    <h4>Baggage Carousel Calculator <span class="status">(Draft)</span></h4>
+                    <p>Grasshopper plugin for airport design</p>
+                    <div class="content-actions">
+                        <button class="admin-btn">Edit</button>
+                        <button class="admin-btn secondary">Publish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Texts Admin -->
+        <div class="admin-content" id="texts-admin">
+            <h3>Add New Text</h3>
+            <form id="text-form">
+                <div class="admin-form-group">
+                    <label for="text-title">Title</label>
+                    <input type="text" id="text-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="text-content">Content</label>
+                    <textarea id="text-content" required></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Text</button>
+                    <button type="button" class="admin-btn secondary" id="publish-text">Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Texts</h3>
+                <div class="content-item">
+                    <h4>Parametric Design in Heritage Conservation <span class="status">(Published)</span></h4>
+                    <p>Journal of Architectural Conservation · 2021</p>
+                    <div class="content-actions">
+                        <button class="admin-btn">Edit</button>
+                        <button class="admin-btn secondary">Unpublish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Downloads Admin -->
+        <div class="admin-content" id="downloads-admin">
+            <h3>Add New Download</h3>
+            <form id="download-form">
+                <div class="admin-form-group">
+                    <label for="download-title">Title</label>
+                    <input type="text" id="download-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-description">Description</label>
+                    <textarea id="download-description"></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn">Save Download</button>
+                    <button type="button" class="admin-btn secondary" id="publish-download">Publish</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Downloads</h3>
+                <div class="content-item">
+                    <h4>Parametric Design Toolkit <span class="status">(Published)</span></h4>
+                    <p>ZIP, 4.2 MB · Grasshopper scripts</p>
+                    <div class="content-actions">
+                        <button class="admin-btn">Edit</button>
+                        <button class="admin-btn secondary">Unpublish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <div class="admin-form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div class="admin-form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <div class="form-buttons">
+                <button class="admin-btn" id="login-submit">Login</button>
+                <button class="admin-btn secondary" id="login-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Eduardo <span>Luce</span> MArch</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+                <p>&copy; 2023 Eduardo Luce MArch. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const adminLoginLink = document.getElementById('admin-login-link');
+            const loginModal = document.getElementById('loginModal');
+            const loginCancel = document.getElementById('login-cancel');
+            const loginSubmit = document.getElementById('login-submit');
+            const adminPanel = document.getElementById('adminPanel');
+            const closeAdmin = document.getElementById('close-admin');
+            const adminTabs = document.querySelectorAll('.admin-tab');
+            const adminContents = document.querySelectorAll('.admin-content');
+            
+            // Login functionality
+            adminLoginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.classList.add('active');
+            });
+            
+            loginCancel.addEventListener('click', function() {
+                loginModal.classList.remove('active');
+            });
+            
+            loginSubmit.addEventListener('click', function() {
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                
+                if (username === 'eluce' && password === 'SabrinaCarpenter') {
+                    loginModal.classList.remove('active');
+                    adminPanel.style.display = 'block';
+                    setTimeout(() => {
+                        adminPanel.classList.add('active');
+                    }, 10);
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            });
+            
+            // Close admin panel
+            closeAdmin.addEventListener('click', function() {
+                adminPanel.classList.remove('active');
+                setTimeout(() => {
+                    adminPanel.style.display = 'none';
+                }, 300);
+            });
+            
+            // Admin tabs functionality
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    adminContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-admin`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Publish buttons functionality
+            const publishButtons = [
+                document.getElementById('publish-project'),
+                document.getElementById('publish-text'),
+                document.getElementById('publish-download')
+            ];
+            
+            publishButtons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', function() {
+                        const buttonText = this.textContent;
+                        this.textContent = buttonText === 'Publish' ? 'Unpublish' : 'Publish';
+                        
+                        // Show notification
+                        const action = buttonText === 'Publish' ? 'published' : 'unpublished';
+                        alert(`Content ${action} successfully!`);
+                    });
+                }
+            });
+            
+            // Form submissions
+            const forms = document.querySelectorAll('#project-form, #text-form, #download-form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Form saved successfully!');
+                    this.reset();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
