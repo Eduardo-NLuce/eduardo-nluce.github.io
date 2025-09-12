@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo Luce MArch - Portfolio</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #000;
+            background: #f0f0f0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #000;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 40px 0 20px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        section {
+            margin-bottom: 50px;
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .portfolio-content {
+            padding: 20px;
+        }
+
+        .portfolio-content h2 {
+            font-size: 1.2rem;
+            margin: 0 0 10px;
+            border: none;
+            padding: 0;
+            color: #000;
+        }
+
+        .portfolio-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Links - only blue elements */
+        a {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Project Detail Modals */
+        .project-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .project-detail {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: #fff;
+            border-radius: 4px;
+            z-index: 101;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid #e0e0e0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #f5f5f5;
+        }
+
+        .project-header h3 {
+            margin: 0;
+            color: #000;
+        }
+
+        .close-project {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .project-description ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project-description li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .project-references {
+            margin: 20px 0;
+        }
+
+        .news-link {
+            display: block;
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-left: 3px solid #1a0dab;
+            margin-bottom: 10px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .news-link:hover {
+            background: #eaeaea;
+            text-decoration: none;
+        }
+
+        .project-download {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .download-btn-large {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .download-btn-large:hover {
+            background: #333;
+            text-decoration: none;
+        }
+
+        .download-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .requirements {
+            margin: 20px 0;
+        }
+
+        .req-item {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Texts and Downloads sections */
+        .texts-list, .downloads-list {
+            list-style: none;
+        }
+
+        .text-item, .download-item {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 3px solid #e0e0e0;
+            transition: border-left-color 0.2s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .text-item:hover, .download-item:hover {
+            border-left-color: #1a0dab;
+        }
+
+        .text-item h3, .download-item h3 {
+            color: #000;
+            margin-top: 0;
+        }
+
+        .text-content {
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download-btn {
+            padding: 8px 16px;
+            background: transparent;
+            color: #1a0dab;
+            border: 1px solid #1a0dab;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background: #1a0dab;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Contact section */
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: #fafafa;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+            color: #333;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .admin-panel.active {
+            right: 0;
+        }
+
+        .admin-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .admin-tab.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .admin-content {
+            display: none;
+        }
+
+        .admin-content.active {
+            display: block;
+        }
+
+        .admin-form-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .admin-form-group input,
+        .admin-form-group textarea,
+        .admin-form-group select {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .admin-form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .admin-btn {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-right: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .admin-btn:hover {
+            background: #333;
+        }
+
+        .admin-btn.secondary {
+            background: transparent;
+            color: #666;
+            border: 1px solid #e0e0e0;
+        }
+
+        .admin-btn.secondary:hover {
+            background: #f0f0f0;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .content-list {
+            margin-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 20px;
+        }
+
+        .content-item {
+            padding: 10px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #e0e0e0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .content-item.published {
+            border-left-color: #1a0dab;
+        }
+
+        .content-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .admin-notice {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .admin-notice p {
+            margin: 0;
+            color: #666;
+        }
+
+        .close-admin {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .status-published {
+            background: #f0f0f0;
+            color: #000;
+            border: 1px solid #e0e0e0;
+        }
+
+        .status-draft {
+            background: #f5f5f5;
+            color: #666;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* File upload styles */
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: #1a0dab;
+        }
+
+        .file-upload p {
+            margin: 0;
+            color: #666;
+        }
+
+        .file-upload-input {
+            display: none;
+        }
+
+        .upload-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #000;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hidden admin access button */
+        .admin-access-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #000;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        .admin-access-btn:hover {
+            opacity: 1;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-detail {
+                width: 95%;
+                height: auto;
+            }
+            
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .admin-tabs {
+                overflow-x: auto;
+            }
+            
+            .form-buttons {
+                flex-direction: column;
+            }
+            
+            .content-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden admin access button -->
+    <div class="admin-access-btn" id="admin-access-btn">
+        <span>A</span>
+    </div>
+
+    <header>
+        <div class="logo">Eduardo Luce MArch</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="portfolio">Portfolio</a></li>
+                <li><a href="#" class="nav-link" data-section="texts">Texts</a></li>
+                <li><a href="#" class="nav-link" data-section="downloads">Downloads</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="portfolio" class="active">
+            <h1>Selected Projects</h1>
+            <div class="portfolio-grid" id="projects-container">
+                <!-- Projects will be loaded here dynamically -->
+            </div>
+        </section>
+
+        <section id="texts">
+            <h1>Writings & Publications</h1>
+            <div class="texts-list" id="texts-container">
+                <!-- Texts will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="downloads">
+            <h1>Resources & Documents</h1>
+            <div class="downloads-list" id="downloads-container">
+                <!-- Downloads will be loaded here dynamically -->
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h1>Get In Touch</h1>
+            <div class="contact-info">
+                <p>Email: eduardo.luce@example.com</p>
+                <p>Studio: 123 Architecture Avenue, Mexico City</p>
+                <p>Phone: +52 55 1234 5678</p>
+            </div>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        &copy; 2023 Eduardo Luce MArch. All rights reserved.
+    </footer>
+
+    <!-- Project Detail Modals will be added here dynamically -->
+    <div id="modals-container"></div>
+    
+    <!-- Modal Overlay -->
+    <div class="project-overlay"></div>
+    
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h2>Content Management</h2>
+            <p>Manage your portfolio content</p>
+            <button class="close-admin">×</button>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="projects">Projects</button>
+            <button class="admin-tab" data-tab="texts">Texts</button>
+            <button class="admin-tab" data-tab="downloads">Downloads</button>
+            <button class="admin-tab" data-tab="settings">Settings</button>
+        </div>
+        
+        <!-- Projects Admin -->
+        <div class="admin-content active" id="projects-admin">
+            <h3 id="project-form-title">Add New Project</h3>
+            <form id="project-form">
+                <input type="hidden" id="project-id">
+                
+                <div class="admin-form-group">
+                    <label for="project-title">Project Title *</label>
+                    <input type="text" id="project-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-description">Description *</label>
+                    <textarea id="project-description" required></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-meta">Metadata (e.g., Location, Year)</label>
+                    <input type="text" id="project-meta">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label>Project Image</label>
+                    <div class="file-upload" id="project-image-upload">
+                        <p>Click to upload image or drag & drop</p>
+                        <input type="file" id="project-image-input" class="file-upload-input" accept="image/*">
+                        <img id="project-image-preview" class="upload-preview" src="" alt="Preview">
+                    </div>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-image-url">Or use image URL</label>
+                    <input type="text" id="project-image-url" placeholder="e.g., https://via.placeholder.com/600x400">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="project-details">Detailed Content (HTML allowed)</label>
+                    <textarea id="project-details" placeholder="You can use HTML tags for formatting"></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn" id="project-save-btn">Save Project</button>
+                    <button type="button" class="admin-btn secondary" id="publish-project">Save & Publish</button>
+                    <button type="button" class="admin-btn secondary" id="cancel-edit" style="display: none;">Cancel Edit</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Projects</h3>
+                <div id="projects-list">
+                    <!-- Projects will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Texts Admin -->
+        <div class="admin-content" id="texts-admin">
+            <h3 id="text-form-title">Add New Text</h3>
+            <form id="text-form">
+                <input type="hidden" id="text-id">
+                
+                <div class="admin-form-group">
+                    <label for="text-title">Title *</label>
+                    <input type="text" id="text-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="text-content">Content *</label>
+                    <textarea id="text-content" required></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="text-meta">Metadata (e.g., Publication, Date)</label>
+                    <input type="text" id="text-meta">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn" id="text-save-btn">Save Text</button>
+                    <button type="button" class="admin-btn secondary" id="publish-text">Save & Publish</button>
+                    <button type="button" class="admin-btn secondary" id="cancel-text-edit" style="display: none;">Cancel Edit</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Texts</h3>
+                <div id="texts-list">
+                    <!-- Texts will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Downloads Admin -->
+        <div class="admin-content" id="downloads-admin">
+            <h3 id="download-form-title">Add New Download</h3>
+            <form id="download-form">
+                <input type="hidden" id="download-id">
+                
+                <div class="admin-form-group">
+                    <label for="download-title">Title *</label>
+                    <input type="text" id="download-title" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-description">Description</label>
+                    <textarea id="download-description"></textarea>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label>File Upload</label>
+                    <div class="file-upload" id="download-file-upload">
+                        <p>Click to upload file or drag & drop</p>
+                        <input type="file" id="download-file-input" class="file-upload-input">
+                    </div>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-file-url">Or use file URL</label>
+                    <input type="text" id="download-file-url" placeholder="e.g., downloads/file.zip">
+                </div>
+                
+                <div class="admin-form-group">
+                    <label for="download-meta">Metadata (e.g., File Size, Format)</label>
+                    <input type="text" id="download-meta">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="admin-btn" id="download-save-btn">Save Download</button>
+                    <button type="button" class="admin-btn secondary" id="publish-download">Save & Publish</button>
+                    <button type="button" class="admin-btn secondary" id="cancel-download-edit" style="display: none;">Cancel Edit</button>
+                </div>
+            </form>
+            
+            <div class="content-list">
+                <h3>Existing Downloads</h3>
+                <div id="downloads-list">
+                    <!-- Downloads will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Admin -->
+        <div class="admin-content" id="settings-admin">
+            <h3>Admin Settings</h3>
+            <div class="admin-notice">
+                <p>These settings are stored locally in your browser. For persistent changes across devices, consider implementing a backend solution.</p>
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="admin-username">Admin Username</label>
+                <input type="text" id="admin-username" value="eluce">
+            </div>
+            
+            <div class="admin-form-group">
+                <label for="admin-password">Admin Password</label>
+                <input type="password" id="admin-password" value="SabrinaCarpenter">
+            </div>
+            
+            <div class="form-buttons">
+                <button type="button" class="admin-btn" id="save-settings">Save Settings</button>
+                <button type="button" class="admin-btn secondary" id="export-data">Export Data</button>
+                <button type="button" class="admin-btn secondary" id="import-data">Import Data</button>
+                <button type="button" class="admin-btn secondary" id="reset-data">Reset All Data</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <div class="admin-form-group">
+                <label for="login-username">Username</label>
+                <input type="text" id="login-username" required>
+            </div>
+            <div class="admin-form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="admin-btn" id="login-submit">Login</button>
+                <button type="button" class="admin-btn secondary" id="login-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Data storage functions
+        function initializeData() {
+            if (!localStorage.getItem('projects')) {
+                localStorage.setItem('projects', JSON.stringify([
+                    {
+                        id: 1,
+                        title: "Dome Reconstruction - Axochiapan Church",
+                        description: "Reconstruction of heritage church dome using parametric design and advanced geometric calculation.",
+                        meta: "Axochiapan, Morelos · 2019-2020",
+                        imageUrl: "https://via.placeholder.com/600x400/f5f5f5/333333?text=Axochiapan+Dome",
+                        details: "<p>Following the 2017 earthquake that severely damaged the main church of Axochiapan, this project involved advanced geometric calculation and parametric modeling using Grasshopper to facilitate the accurate reconstruction of the historic dome.</p><h4>Technical Approach</h4><ul><li>Digital Documentation: Laser scanning and photogrammetry of damaged structure</li><li>Parametric Modeling: Grasshopper definition for dome geometry reconstruction</li><li>Structural Analysis: Integration with finite element analysis plugins</li><li>Material Optimization: Parametic optimization of brick patterns and placement</li></ul>",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: 2,
+                        title: "Baggage Carousel Calculator",
+                        description: "Grasshopper plugin for optimizing airport baggage handling systems according to IATA standards.",
+                        meta: "Grasshopper Plugin · 2025",
+                        imageUrl: "https://via.placeholder.com/600x400/f5f5f5/333333?text=BHS+Calculator",
+                        details: "<p>Parametric tool for Grasshopper that automatically calculates and designs baggage reclaim carousels according to IATA specifications and aircraft data. Optimizes spatial distribution in reclaim halls based on operational aircraft mix.</p><h4>Technical Requirements</h4><div class='requirements'><div class='req-item'><strong>Software:</strong> Rhinoceros 7+ and Grasshopper</div><div class='req-item'><strong>Components:</strong> Standard Grasshopper (no additional plugins required)</div></div>",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    }
+                ]));
+            }
+            if (!localStorage.getItem('texts')) {
+                localStorage.setItem('texts', JSON.stringify([
+                    {
+                        id: 1,
+                        title: "Parametric Design in Heritage Conservation",
+                        content: "This paper explores the application of parametric design methodologies in the conservation of heritage structures, with a focus on post-earthquake reconstruction projects in Mexico. The research demonstrates how digital tools can enhance accuracy while respecting traditional construction techniques. The study presents case studies from various heritage sites and provides guidelines for implementing parametric approaches in conservation projects.",
+                        meta: "Journal of Architectural Conservation · 2021",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: 2,
+                        title: "Algorithmic Approaches to Airport Design",
+                        content: "Examining the role of computational design in optimizing passenger flow and operational efficiency in airport terminals. The paper presents case studies of parametric tools developed for baggage handling systems and terminal layout optimization. It discusses how algorithmic design can reduce construction costs while improving user experience and operational efficiency in airport environments.",
+                        meta: "AeroDesign Symposium · 2023",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    }
+                ]));
+            }
+            if (!localStorage.getItem('downloads')) {
+                localStorage.setItem('downloads', JSON.stringify([
+                    {
+                        id: 1,
+                        title: "Parametric Design Toolkit",
+                        description: "A collection of Grasshopper scripts for architectural design optimization",
+                        fileUrl: "#",
+                        meta: "ZIP, 4.2 MB · Grasshopper scripts",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: 2,
+                        title: "Research Portfolio PDF",
+                        description: "Complete portfolio of research projects and publications",
+                        fileUrl: "#",
+                        meta: "PDF, 8.5 MB · Complete portfolio",
+                        published: true,
+                        createdAt: new Date().toISOString()
+                    }
+                ]));
+            }
+            if (!localStorage.getItem('settings')) {
+                localStorage.setItem('settings', JSON.stringify({
+                    username: 'eluce',
+                    password: 'SabrinaCarpenter'
+                }));
+            }
+        }
+
+        function getData(key) {
+            return JSON.parse(localStorage.getItem(key)) || [];
+        }
+
+        function saveData(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Show notification
+        function showNotification(message, isSuccess = true) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.background = isSuccess ? '#000' : '#cc0000';
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // File upload handling
+        function setupFileUpload(uploadElementId, inputElementId, previewElementId = null) {
+            const uploadElement = document.getElementById(uploadElementId);
+            const inputElement = document.getElementById(inputElementId);
+            const previewElement = previewElementId ? document.getElementById(previewElementId) : null;
+
+            uploadElement.addEventListener('click', () => {
+                inputElement.click();
+            });
+
+            uploadElement.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadElement.style.borderColor = '#1a0dab';
+            });
+
+            uploadElement.addEventListener('dragleave', () => {
+                uploadElement.style.borderColor = '#e0e0e0';
+            });
+
+            uploadElement.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadElement.style.borderColor = '#e0e0e0';
+                
+                if (e.dataTransfer.files.length) {
+                    inputElement.files = e.dataTransfer.files;
+                    handleFileSelection(inputElement, previewElement);
+                }
+            });
+
+            inputElement.addEventListener('change', () => {
+                handleFileSelection(inputElement, previewElement);
+            });
+        }
+
+        function handleFileSelection(inputElement, previewElement) {
+            if (inputElement.files && inputElement.files[0]) {
+                const file = inputElement.files[0];
+                
+                if (previewElement && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        previewElement.src = e.target.result;
+                        previewElement.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+                
+                showNotification(`File "${file.name}" selected`);
+            }
+        }
+
+        // Main functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize data
+            initializeData();
+            
+            // Set up file uploads
+            setupFileUpload('project-image-upload', 'project-image-input', 'project-image-preview');
+            setupFileUpload('download-file-upload', 'download-file-input');
+            
+            // Navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetSection = this.getAttribute('data-section');
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Hidden admin access button
+            document.getElementById('admin-access-btn').addEventListener('click', function() {
+                document.getElementById('loginModal').classList.add('active');
+            });
+            
+            // Admin panel functionality
+            const adminPanel = document.getElementById('adminPanel');
+            const loginModal = document.getElementById('loginModal');
+            const adminTabs = document.querySelectorAll('.admin-tab');
+            const adminContents = document.querySelectorAll('.admin-content');
+            const closeAdminBtn = document.querySelector('.close-admin');
+            const loginSubmitBtn = document.getElementById('login-submit');
+            const loginCancelBtn = document.getElementById('login-cancel');
+            
+            // Check if admin access is requested
+            if (window.location.hash === '#admin') {
+                loginModal.classList.add('active');
+            }
+            
+            // Admin tab switching
+            adminTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    adminTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    adminContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-admin`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Login functionality
+            loginSubmitBtn.addEventListener('click', function() {
+                const username = document.getElementById('login-username').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Check credentials (username: eluce, password: SabrinaCarpenter)
+                if (username === 'eluce' && password === 'SabrinaCarpenter') {
+                    loginModal.classList.remove('active');
+                    adminPanel.style.display = 'block';
+                    setTimeout(() => {
+                        adminPanel.classList.add('active');
+                    }, 10);
+                    
+                    // Load admin content
+                    loadAdminProjects();
+                    loadAdminTexts();
+                    loadAdminDownloads();
+                } else {
+                    showNotification('Invalid credentials. Please try again.', false);
+                }
+            });
+            
+            loginCancelBtn.addEventListener('click', function() {
+                loginModal.classList.remove('active');
+                window.location.hash = '';
+            });
+            
+            closeAdminBtn.addEventListener('click', function() {
+                adminPanel.classList.remove('active');
+                setTimeout(() => {
+                    adminPanel.style.display = 'none';
+                    resetFormStates();
+                }, 300);
+            });
+            
+            // Publish buttons functionality
+            document.getElementById('publish-project').addEventListener('click', function() {
+                saveProject(true);
+            });
+            
+            document.getElementById('publish-text').addEventListener('click', function() {
+                saveText(true);
+            });
+            
+            document.getElementById('publish-download').addEventListener('click', function() {
+                saveDownload(true);
+            });
+            
+            // Form submissions
+            document.getElementById('project-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveProject(false);
+            });
+            
+            document.getElementById('text-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveText(false);
+            });
+            
+            document.getElementById('download-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveDownload(false);
+            });
+            
+            // Cancel edit buttons
+            document.getElementById('cancel-edit').addEventListener('click', resetProjectForm);
+            document.getElementById('cancel-text-edit').addEventListener('click', resetTextForm);
+            document.getElementById('cancel-download-edit').addEventListener('click', resetDownloadForm);
+            
+            // Settings functionality
+            document.getElementById('save-settings').addEventListener('click', saveSettings);
+            document.getElementById('export-data').addEventListener('click', exportData);
+            document.getElementById('import-data').addEventListener('click', importData);
+            document.getElementById('reset-data').addEventListener('click', resetData);
+            
+            // Load content for the main site
+            loadProjects();
+            loadTexts();
+            loadDownloads();
+        });
+
+        // Reset form states
+        function resetFormStates() {
+            resetProjectForm();
+            resetTextForm();
+            resetDownloadForm();
+        }
+
+        // Project functions
+        function saveProject(publish) {
+            const id = document.getElementById('project-id').value;
+            const title = document.getElementById('project-title').value;
+            const description = document.getElementById('project-description').value;
+            const meta = document.getElementById('project-meta').value;
+            const imageUrl = document.getElementById('project-image-url').value;
+            const details = document.getElementById('project-details').value;
+            const imageInput = document.getElementById('project-image-input');
+            
+            if (!title || !description) {
+                showNotification('Please fill in all required fields', false);
+                return;
+            }
+            
+            const projects = getData('projects');
+            let imageUrlFinal = imageUrl;
+            
+            // Handle file upload
+            if (imageInput.files && imageInput.files[0]) {
+                const file = imageInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageUrlFinal = e.target.result;
+                    completeProjectSave();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                completeProjectSave();
+            }
+            
+            function completeProjectSave() {
+                if (id) {
+                    // Update existing project
+                    const projectIndex = projects.findIndex(p => p.id == id);
+                    if (projectIndex !== -1) {
+                        projects[projectIndex] = {
+                            ...projects[projectIndex],
+                            title,
+                            description,
+                            meta,
+                            imageUrl: imageUrlFinal,
+                            details,
+                            published: publish
+                        };
+                    }
+                } else {
+                    // Create new project
+                    const newProject = {
+                        id: Date.now(),
+                        title,
+                        description,
+                        meta,
+                        imageUrl: imageUrlFinal,
+                        details,
+                        published: publish,
+                        createdAt: new Date().toISOString()
+                    };
+                    projects.push(newProject);
+                }
+                
+                saveData('projects', projects);
+                resetProjectForm();
+                loadAdminProjects();
+                loadProjects();
+                
+                showNotification(id ? 
+                    (publish ? 'Project updated and published!' : 'Project updated!') : 
+                    (publish ? 'Project published successfully!' : 'Project saved as draft!'));
+            }
+        }
+
+        function loadProjects() {
+            const projects = getData('projects');
+            const projectsContainer = document.getElementById('projects-container');
+            const modalsContainer = document.getElementById('modals-container');
+            
+            projectsContainer.innerHTML = '';
+            modalsContainer.innerHTML = '';
+            
+            if (projects.length === 0) {
+                projectsContainer.innerHTML = '<p>No projects found.</p>';
+                return;
+            }
+            
+            // Filter only published projects
+            const publishedProjects = projects.filter(p => p.published);
+            
+            if (publishedProjects.length === 0) {
+                projectsContainer.innerHTML = '<p>No published projects yet.</p>';
+                return;
+            }
+            
+            publishedProjects.forEach(project => {
+                // Create project card
+                const projectItem = document.createElement('div');
+                projectItem.className = 'portfolio-item';
+                projectItem.innerHTML = `
+                    <img src="${project.imageUrl}" alt="${project.title}">
+                    <div class="portfolio-content">
+                        <h2>${project.title}</h2>
+                        <p>${project.meta || 'No metadata available'}</p>
+                        <div class="click-hint">Click for details</div>
+                    </div>
+                `;
+                
+                // Add click event to open modal
+                projectItem.addEventListener('click', function() {
+                    openProjectModal(project.id);
+                });
+                
+                projectsContainer.appendChild(projectItem);
+                
+                // Create modal for this project
+                const projectModal = document.createElement('div');
+                projectModal.id = `project-${project.id}`;
+                projectModal.className = 'project-detail';
+                projectModal.innerHTML = `
+                    <div class="project-header">
+                        <h3>${project.title}</h3>
+                        <button class="close-project">×</button>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-meta">${project.meta || ''}</p>
+                        <div class="project-description">
+                            ${project.details || project.description}
+                        </div>
+                    </div>
+                `;
+                
+                modalsContainer.appendChild(projectModal);
+            });
+            
+            // Add event listeners to close buttons
+            const closeProjectButtons = document.querySelectorAll('.close-project');
+            const projectOverlay = document.querySelector('.project-overlay');
+            const projectModals = document.querySelectorAll('.project-detail');
+            
+            function closeProjectModals() {
+                projectModals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                projectOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            closeProjectButtons.forEach(button => {
+                button.addEventListener('click', closeProjectModals);
+            });
+            
+            projectOverlay.addEventListener('click', closeProjectModals);
+        }
+
+        function openProjectModal(projectId) {
+            const modal = document.getElementById(`project-${projectId}`);
+            const projectOverlay = document.querySelector('.project-overlay');
+            
+            if (modal) {
+                modal.style.display = 'block';
+                projectOverlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function loadAdminProjects() {
+            const projects = getData('projects');
+            const projectsList = document.getElementById('projects-list');
+            
+            projectsList.innerHTML = '';
+            
+            if (projects.length === 0) {
+                projectsList.innerHTML = '<p>No projects found. Create your first project.</p>';
+                return;
+            }
+            
+            projects.forEach(project => {
+                const projectItem = document.createElement('div');
+                projectItem.className = `content-item ${project.published ? 'published' : ''}`;
+                projectItem.innerHTML = `
+                    <h4>${project.title} ${project.published ? '<span class="status-badge status-published">Published</span>' : '<span class="status-badge status-draft">Draft</span>'}</h4>
+                    <p class="meta">${project.meta || 'No metadata'} • Created: ${new Date(project.createdAt).toLocaleDateString()}</p>
+                    <p>${project.description}</p>
+                    <div class="content-actions">
+                        <button class="admin-btn" onclick="editProject(${project.id})">Edit</button>
+                        <button class="admin-btn secondary" onclick="togglePublishProject(${project.id})">${project.published ? 'Unpublish' : 'Publish'}</button>
+                        <button class="admin-btn secondary" onclick="deleteProject(${project.id})">Delete</button>
+                    </div>
+                `;
+                projectsList.appendChild(projectItem);
+            });
+        }
+
+        function editProject(id) {
+            const projects = getData('projects');
+            const project = projects.find(p => p.id == id);
+            
+            if (project) {
+                document.getElementById('project-form-title').textContent = 'Edit Project';
+                document.getElementById('project-id').value = project.id;
+                document.getElementById('project-title').value = project.title;
+                document.getElementById('project-description').value = project.description;
+                document.getElementById('project-meta').value = project.meta || '';
+                document.getElementById('project-image-url').value = project.imageUrl || '';
+                document.getElementById('project-details').value = project.details || '';
+                
+                // Show preview if image URL exists
+                const preview = document.getElementById('project-image-preview');
+                if (project.imageUrl) {
+                    preview.src = project.imageUrl;
+                    preview.style.display = 'block';
+                }
+                
+                // Show cancel button
+                document.getElementById('cancel-edit').style.display = 'block';
+                
+                // Scroll to form
+                document.getElementById('project-form').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function resetProjectForm() {
+            document.getElementById('project-form-title').textContent = 'Add New Project';
+            document.getElementById('project-form').reset();
+            document.getElementById('project-id').value = '';
+            document.getElementById('project-image-preview').style.display = 'none';
+            document.getElementById('cancel-edit').style.display = 'none';
+        }
+
+        function togglePublishProject(id) {
+            const projects = getData('projects');
+            const projectIndex = projects.findIndex(p => p.id == id);
+            
+            if (projectIndex !== -1) {
+                projects[projectIndex].published = !projects[projectIndex].published;
+                saveData('projects', projects);
+                loadAdminProjects();
+                loadProjects();
+                
+                showNotification(projects[projectIndex].published ? 
+                    'Project published successfully!' : 'Project unpublished successfully!');
+            }
+        }
+
+        function deleteProject(id) {
+            if (confirm('Are you sure you want to delete this project?')) {
+                const projects = getData('projects');
+                const updatedProjects = projects.filter(p => p.id != id);
+                saveData('projects', updatedProjects);
+                loadAdminProjects();
+                loadProjects();
+                
+                showNotification('Project deleted successfully!');
+            }
+        }
+
+        // Text functions
+        function saveText(publish) {
+            const id = document.getElementById('text-id').value;
+            const title = document.getElementById('text-title').value;
+            const content = document.getElementById('text-content').value;
+            const meta = document.getElementById('text-meta').value;
+            
+            if (!title || !content) {
+                showNotification('Please fill in all required fields', false);
+                return;
+            }
+            
+            const texts = getData('texts');
+            
+            if (id) {
+                // Update existing text
+                const textIndex = texts.findIndex(t => t.id == id);
+                if (textIndex !== -1) {
+                    texts[textIndex] = {
+                        ...texts[textIndex],
+                        title,
+                        content,
+                        meta,
+                        published: publish
+                    };
+                }
+            } else {
+                // Create new text
+                const newText = {
+                    id: Date.now(),
+                    title,
+                    content,
+                    meta,
+                    published: publish,
+                    createdAt: new Date().toISOString()
+                };
+                texts.push(newText);
+            }
+            
+            saveData('texts', texts);
+            resetTextForm();
+            loadAdminTexts();
+            loadTexts();
+            
+            showNotification(id ? 
+                (publish ? 'Text updated and published!' : 'Text updated!') : 
+                (publish ? 'Text published successfully!' : 'Text saved as draft!'));
+        }
+
+        function loadTexts() {
+            const texts = getData('texts');
+            const textsContainer = document.getElementById('texts-container');
+            
+            textsContainer.innerHTML = '';
+            
+            if (texts.length === 0) {
+                textsContainer.innerHTML = '<p>No texts found.</p>';
+                return;
+            }
+            
+            // Filter only published texts
+            const publishedTexts = texts.filter(t => t.published);
+            
+            if (publishedTexts.length === 0) {
+                textsContainer.innerHTML = '<p>No published texts yet.</p>';
+                return;
+            }
+            
+            publishedTexts.forEach(text => {
+                const textItem = document.createElement('div');
+                textItem.className = 'text-item';
+                textItem.innerHTML = `
+                    <h3>${text.title}</h3>
+                    <p class="meta">${text.meta || ''} • ${new Date(text.createdAt).toLocaleDateString()}</p>
+                    <div class="text-content">
+                        <p>${text.content}</p>
+                    </div>
+                `;
+                
+                textsContainer.appendChild(textItem);
+            });
+        }
+
+        function loadAdminTexts() {
+            const texts = getData('texts');
+            const textsList = document.getElementById('texts-list');
+            
+            textsList.innerHTML = '';
+            
+            if (texts.length === 0) {
+                textsList.innerHTML = '<p>No texts found. Create your first text.</p>';
+                return;
+            }
+            
+            texts.forEach(text => {
+                const textItem = document.createElement('div');
+                textItem.className = `content-item ${text.published ? 'published' : ''}`;
+                textItem.innerHTML = `
+                    <h4>${text.title} ${text.published ? '<span class="status-badge status-published">Published</span>' : '<span class="status-badge status-draft">Draft</span>'}</h4>
+                    <p class="meta">${text.meta || 'No metadata'} • Created: ${new Date(text.createdAt).toLocaleDateString()}</p>
+                    <p>${text.content.substring(0, 100)}${text.content.length > 100 ? '...' : ''}</p>
+                    <div class="content-actions">
+                        <button class="admin-btn" onclick="editText(${text.id})">Edit</button>
+                        <button class="admin-btn secondary" onclick="togglePublishText(${text.id})">${text.published ? 'Unpublish' : 'Publish'}</button>
+                        <button class="admin-btn secondary" onclick="deleteText(${text.id})">Delete</button>
+                    </div>
+                `;
+                textsList.appendChild(textItem);
+            });
+        }
+
+        function editText(id) {
+            const texts = getData('texts');
+            const text = texts.find(t => t.id == id);
+            
+            if (text) {
+                document.getElementById('text-form-title').textContent = 'Edit Text';
+                document.getElementById('text-id').value = text.id;
+                document.getElementById('text-title').value = text.title;
+                document.getElementById('text-content').value = text.content;
+                document.getElementById('text-meta').value = text.meta || '';
+                
+                // Show cancel button
+                document.getElementById('cancel-text-edit').style.display = 'block';
+                
+                // Scroll to form
+                document.getElementById('text-form').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function resetTextForm() {
+            document.getElementById('text-form-title').textContent = 'Add New Text';
+            document.getElementById('text-form').reset();
+            document.getElementById('text-id').value = '';
+            document.getElementById('cancel-text-edit').style.display = 'none';
+        }
+
+        function togglePublishText(id) {
+            const texts = getData('texts');
+            const textIndex = texts.findIndex(t => t.id == id);
+            
+            if (textIndex !== -1) {
+                texts[textIndex].published = !texts[textIndex].published;
+                saveData('texts', texts);
+                loadAdminTexts();
+                loadTexts();
+                
+                showNotification(texts[textIndex].published ? 
+                    'Text published successfully!' : 'Text unpublished successfully!');
+            }
+        }
+
+        function deleteText(id) {
+            if (confirm('Are you sure you want to delete this text?')) {
+                const texts = getData('texts');
+                const updatedTexts = texts.filter(t => t.id != id);
+                saveData('texts', updatedTexts);
+                loadAdminTexts();
+                loadTexts();
+                
+                showNotification('Text deleted successfully!');
+            }
+        }
+
+        // Download functions
+        function saveDownload(publish) {
+            const id = document.getElementById('download-id').value;
+            const title = document.getElementById('download-title').value;
+            const description = document.getElementById('download-description').value;
+            const fileUrl = document.getElementById('download-file-url').value;
+            const meta = document.getElementById('download-meta').value;
+            const fileInput = document.getElementById('download-file-input');
+            
+            if (!title) {
+                showNotification('Please fill in all required fields', false);
+                return;
+            }
+            
+            const downloads = getData('downloads');
+            let fileUrlFinal = fileUrl;
+            
+            // Handle file upload
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fileUrlFinal = e.target.result;
+                    completeDownloadSave();
+                };
+                reader.readAsDataURL(file);
+            } else {
+                completeDownloadSave();
+            }
+            
+            function completeDownloadSave() {
+                if (id) {
+                    // Update existing download
+                    const downloadIndex = downloads.findIndex(d => d.id == id);
+                    if (downloadIndex !== -1) {
+                        downloads[downloadIndex] = {
+                            ...downloads[downloadIndex],
+                            title,
+                            description,
+                            fileUrl: fileUrlFinal,
+                            meta,
+                            published: publish
+                        };
+                    }
+                } else {
+                    // Create new download
+                    const newDownload = {
+                        id: Date.now(),
+                        title,
+                        description,
+                        fileUrl: fileUrlFinal,
+                        meta,
+                        published: publish,
+                        createdAt: new Date().toISOString()
+                    };
+                    downloads.push(newDownload);
+                }
+                
+                saveData('downloads', downloads);
+                resetDownloadForm();
+                loadAdminDownloads();
+                loadDownloads();
+                
+                showNotification(id ? 
+                    (publish ? 'Download updated and published!' : 'Download updated!') : 
+                    (publish ? 'Download published successfully!' : 'Download saved as draft!'));
+            }
+        }
+
+        function loadDownloads() {
+            const downloads = getData('downloads');
+            const downloadsContainer = document.getElementById('downloads-container');
+            
+            downloadsContainer.innerHTML = '';
+            
+            if (downloads.length === 0) {
+                downloadsContainer.innerHTML = '<p>No downloads found.</p>';
+                return;
+            }
+            
+            // Filter only published downloads
+            const publishedDownloads = downloads.filter(d => d.published);
+            
+            if (publishedDownloads.length === 0) {
+                downloadsContainer.innerHTML = '<p>No published downloads yet.</p>';
+                return;
+            }
+            
+            publishedDownloads.forEach(download => {
+                const downloadItem = document.createElement('div');
+                downloadItem.className = 'download-item';
+                downloadItem.innerHTML = `
+                    <div>
+                        <h3>${download.title}</h3>
+                        <p class="meta">${download.meta || ''}</p>
+                        <p>${download.description || ''}</p>
+                    </div>
+                    <a href="${download.fileUrl}" class="download-btn" download="${download.title}">Download</a>
+                `;
+                
+                downloadsContainer.appendChild(downloadItem);
+            });
+        }
+
+        function loadAdminDownloads() {
+            const downloads = getData('downloads');
+            const downloadsList = document.getElementById('downloads-list');
+            
+            downloadsList.innerHTML = '';
+            
+            if (downloads.length === 0) {
+                downloadsList.innerHTML = '<p>No downloads found. Create your first download.</p>';
+                return;
+            }
+            
+            downloads.forEach(download => {
+                const downloadItem = document.createElement('div');
+                downloadItem.className = `content-item ${download.published ? 'published' : ''}`;
+                downloadItem.innerHTML = `
+                    <h4>${download.title} ${download.published ? '<span class="status-badge status-published">Published</span>' : '<span class="status-badge status-draft">Draft</span>'}</h4>
+                    <p class="meta">${download.meta || 'No metadata'} • Created: ${new Date(download.createdAt).toLocaleDateString()}</p>
+                    <p>${download.description || 'No description'}</p>
+                    <div class="content-actions">
+                        <button class="admin-btn" onclick="editDownload(${download.id})">Edit</button>
+                        <button class="admin-btn secondary" onclick="togglePublishDownload(${download.id})">${download.published ? 'Unpublish' : 'Publish'}</button>
+                        <button class="admin-btn secondary" onclick="deleteDownload(${download.id})">Delete</button>
+                    </div>
+                `;
+                downloadsList.appendChild(downloadItem);
+            });
+        }
+
+        function editDownload(id) {
+            const downloads = getData('downloads');
+            const download = downloads.find(d => d.id == id);
+            
+            if (download) {
+                document.getElementById('download-form-title').textContent = 'Edit Download';
+                document.getElementById('download-id').value = download.id;
+                document.getElementById('download-title').value = download.title;
+                document.getElementById('download-description').value = download.description || '';
+                document.getElementById('download-file-url').value = download.fileUrl || '';
+                document.getElementById('download-meta').value = download.meta || '';
+                
+                // Show cancel button
+                document.getElementById('cancel-download-edit').style.display = 'block';
+                
+                // Scroll to form
+                document.getElementById('download-form').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function resetDownloadForm() {
+            document.getElementById('download-form-title').textContent = 'Add New Download';
+            document.getElementById('download-form').reset();
+            document.getElementById('download-id').value = '';
+            document.getElementById('cancel-download-edit').style.display = 'none';
+        }
+
+        function togglePublishDownload(id) {
+            const downloads = getData('downloads');
+            const downloadIndex = downloads.findIndex(d => d.id == id);
+            
+            if (downloadIndex !== -1) {
+                downloads[downloadIndex].published = !downloads[downloadIndex].published;
+                saveData('downloads', downloads);
+                loadAdminDownloads();
+                loadDownloads();
+                
+                showNotification(downloads[downloadIndex].published ? 
+                    'Download published successfully!' : 'Download unpublished successfully!');
+            }
+        }
+
+        function deleteDownload(id) {
+            if (confirm('Are you sure you want to delete this download?')) {
+                const downloads = getData('downloads');
+                const updatedDownloads = downloads.filter(d => d.id != id);
+                saveData('downloads', updatedDownloads);
+                loadAdminDownloads();
+                loadDownloads();
+                
+                showNotification('Download deleted successfully!');
+            }
+        }
+
+        // Settings functions
+        function saveSettings() {
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+            
+            const settings = {
+                username,
+                password
+            };
+            
+            saveData('settings', settings);
+            showNotification('Settings saved successfully!');
+        }
+
+        function exportData() {
+            const data = {
+                projects: getData('projects'),
+                texts: getData('texts'),
+                downloads: getData('downloads'),
+                settings: getData('settings')
+            };
+            
+            const dataStr = JSON.stringify(data);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'portfolio-data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('Data exported successfully!');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = FileReader();
+                
+                reader.onload = function(e) {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        
+                        if (data.projects) saveData('projects', data.projects);
+                        if (data.texts) saveData('texts', data.texts);
+                        if (data.downloads) saveData('downloads', data.downloads);
+                        if (data.settings) saveData('settings', data.settings);
+                        
+                        loadProjects();
+                        loadTexts();
+                        loadDownloads();
+                        
+                        showNotification('Data imported successfully!');
+                    } catch (error) {
+                        showNotification('Error importing data: Invalid file format', false);
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function resetData() {
+            if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
+                localStorage.removeItem('projects');
+                localStorage.removeItem('texts');
+                localStorage.removeItem('downloads');
+                
+                initializeData();
+                loadProjects();
+                loadTexts();
+                loadDownloads();
+                
+                showNotification('All data has been reset!');
+            }
+        }
+    </script>
+</body>
+</html>
